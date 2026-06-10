@@ -32,28 +32,49 @@ body{
 }
 
 /* ── INTRO POPUP ── */
-#popup-overlay{position:fixed;inset:0;z-index:9999;background:rgba(26,26,36,0.85);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;overflow:hidden}
-.popup-content{position:relative;width:min(460px,92vw);background:var(--panel);border:1px solid var(--gold);box-shadow:0 24px 64px rgba(212,175,55,0.15);overflow:hidden;animation:popupFadeIn 0.6s cubic-bezier(0.16,1,0.3,1) forwards}
+#popup-overlay, #invite-overlay{position:fixed;inset:0;z-index:9999;background:rgba(26,26,36,0.85);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;overflow:hidden}
+#invite-overlay{display:none;z-index:9998}
+
+.popup-content, .invite-content{position:relative;width:min(460px,92vw);background:var(--panel);border:1px solid var(--gold);box-shadow:0 24px 64px rgba(212,175,55,0.15);overflow:hidden;animation:popupFadeIn 0.6s cubic-bezier(0.16,1,0.3,1) forwards}
 @keyframes popupFadeIn{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
-.popup-header{border-bottom:var(--border);padding:14px 20px;display:flex;align-items:center;justify-content:between}
-.popup-header-text{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--gold-dim);flex-grow:1}
+
+.popup-header, .invite-header{border-bottom:var(--border);padding:14px 20px;display:flex;align-items:center;justify-content:between}
+.popup-header-text, .invite-header-text{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--gold-dim);flex-grow:1}
 .popup-close{background:none;border:none;color:var(--ink);cursor:pointer;font-size:16px;opacity:0.4;transition:opacity 0.2s}
 .popup-close:hover{opacity:1}
-.popup-body{padding:32px 28px}
-.popup-badge{display:inline-block;border:1px solid var(--pink);color:var(--pink);font-size:10px;font-weight:700;padding:3px 10px;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:20px}
-.popup-headline{font-family:'Playfair Display',serif;font-size:26px;font-weight:400;line-height:1.3;margin-bottom:12px;color:var(--ink)}
+
+.popup-body, .invite-body{padding:32px 28px}
+.popup-badge, .invite-badge{display:inline-block;border:1px solid var(--pink);color:var(--pink);font-size:10px;font-weight:700;padding:3px 10px;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:20px}
+.invite-badge{border-color:var(--blue);color:var(--blue)}
+
+.popup-headline, .invite-headline{font-family:'Playfair Display',serif;font-size:26px;font-weight:400;line-height:1.3;margin-bottom:12px;color:var(--ink)}
+.invite-headline{font-size:28px;text-align:center;margin-bottom:24px}
+
 .popup-sub{font-size:13px;color:#605e5a;margin-bottom:24px;line-height:1.5}
 .popup-image-strip{display:flex;gap:12px;margin-bottom:24px}
 .popup-fake-img{flex:1;height:80px;background:var(--cream);border:var(--border);display:flex;align-items:center;justify-content:center;font-size:28px;position:relative}
 .popup-fake-img::after{content:'VERIFIED';position:absolute;bottom:4px;left:0;right:0;text-align:center;font-size:8px;font-weight:700;letter-spacing:0.5px;color:var(--gold-dim);opacity:0.8}
 .popup-testimonial{border-left:2px solid var(--gold);padding-left:14px;margin-bottom:24px;font-size:12px;color:#5c5a57;font-style:italic;line-height:1.6}
 .popup-testimonial strong{color:var(--ink);font-weight:500}
+
 .popup-features{display:flex;flex-direction:column;gap:8px;margin-bottom:28px}
 .popup-feature{display:flex;align-items:center;gap:8px;font-size:12px;color:#4a4845}
 .popup-feature::before{content:'•';color:var(--pink);font-weight:bold}
-.popup-cta{width:100%;background:var(--ink);color:#fff;border:none;padding:16px;font-size:13px;font-weight:500;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.2s}
+
+.popup-cta, .invite-cta{width:100%;background:var(--ink);color:#fff;border:none;padding:16px;font-size:13px;font-weight:500;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.2s}
 .popup-cta:hover{background:var(--blue);transform:translateY(-1px);box-shadow:0 8px 20px rgba(42,111,219,0.3)}
+.invite-cta{background:var(--blue);border:1px solid var(--blue)}
+.invite-cta:hover{background:var(--ink);border-color:var(--ink);box-shadow:0 8px 24px rgba(0,0,0,0.15)}
+
 .popup-disclaimer{font-size:9px;color:#9c9a96;margin-top:14px;text-align:center;line-height:1.4}
+
+/* Elegant Invitation Parameters */
+.invite-card-details{border-top:var(--border);border-bottom:var(--border);padding:20px 0;margin-bottom:24px;display:flex;flex-direction:column;gap:14px}
+.invite-row{display:flex;font-size:14px;line-height:1.4}
+.invite-label{font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--gold-dim);width:70px;flex-shrink:0}
+.invite-val{color:var(--ink);font-family:'Playfair Display',serif;font-style:italic}
+.invite-val.prose{font-family:'DM Sans',sans-serif;font-style:normal;color:#4a4845}
+.invite-seal{text-align:center;font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--pink);font-weight:700;margin-top:4px}
 
 /* ── MAIN SITE ── */
 #main-site{display:none;min-height:100vh}
@@ -63,7 +84,6 @@ body{
 .header-image-container{position:relative;width:84px;height:84px;border-radius:50%;border:2px solid var(--gold);background:var(--cream);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .header-bear-img{width:100%;height:100%;object-fit:cover;border-radius:50%}
 
-/* Cute heart doodles around bear profile */
 .heart-doodle{position:absolute;width:18px;height:18px;fill:var(--pink);opacity:0.85;pointer-events:none}
 .hd-1{top:-6px;left:4px;animation:heartFloatOne 2.2s ease-in-out infinite alternate}
 .hd-2{bottom:4px;right:-10px;animation:heartFloatTwo 1.8s ease-in-out infinite alternate}
@@ -87,11 +107,10 @@ body{
 .tab-panel.active{display:block;padding:48px 40px}
 
 /* ── CONNECTIONS & DANCING FIGURES ── */
-.connections-wrapper{max-width:680px;margin:0 auto}
+.connections-wrapper{position:relative;max-width:680px;margin:0 auto}
 .game-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:400;margin-bottom:6px;color:var(--ink)}
 .game-desc{font-size:13px;color:#7c7a74;margin-bottom:14px}
 
-/* Minimalist classy dancing line art wrappers */
 .dancing-stage{display:flex;justify-content:center;gap:45px;margin-bottom:24px;padding:10px;background:var(--panel);border:var(--border);border-radius:4px}
 .dancing-stick{width:36px;height:52px;stroke:var(--blue);stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transform-origin:bottom center}
 .ds-1{animation:danceRoutineA 0.5s ease-in-out infinite alternate;stroke:var(--pink)}
@@ -138,6 +157,18 @@ body{
 .attempt-dot.used{background:#e0dbcf}
 .conn-message{margin-top:20px;min-height:24px;font-size:14px;color:var(--pink);text-align:center;font-weight:700}
 
+.conn-celebration-element {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1000;
+  animation: elementFloatUp 2.5s ease-out forwards;
+}
+@keyframes elementFloatUp {
+  0% { transform: translateY(100px) scale(0.3) rotate(0deg); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translateY(-400px) scale(1.1) rotate(var(--r, 360deg)); opacity: 0; }
+}
+
 /* ── CROSSWORD ── */
 .crossword-wrapper{max-width:840px;margin:0 auto}
 .crossword-layout{display:flex;gap:48px;align-items:flex-start;flex-wrap:wrap}
@@ -171,8 +202,8 @@ body{
   pointer-events:none;
   z-index:5001;
   user-select:none;
-  width:64px;
-  height:64px;
+  width:68px;
+  height:68px;
   object-fit:cover;
   border-radius:6px;
   border:1px solid rgba(212,175,55,0.4);
@@ -230,7 +261,37 @@ body{
         <div class="popup-feature">Discreet billing statement camouflage: "BREAD SUBSCRIPTION"</div>
       </div>
       <button class="popup-cta" id="popup-cta-btn">Initialize Elite Profile Sequence 💘</button>
-      <div class="popup-disclaimer">EuroAffair™ is an independent entertainment simulation. Not responsible for emotional architecture, existential updates, or artisanal sourdough invoicing anomalies. Happy Birthday.</div>
+      <div class="popup-disclaimer">EuroAffair™ is an independent entertainment simulation. Not responsible for emotional architecture, existential updates, or invoicing anomalies. Happy Birthday.</div>
+    </div>
+  </div>
+</div>
+
+<div id="invite-overlay">
+  <div class="invite-content">
+    <div class="invite-header">
+      <span class="invite-header-text">Official Protocol • Registry Entry</span>
+    </div>
+    <div class="invite-body">
+      <div class="invite-badge">Formal Invitation</div>
+      <div class="invite-headline">You are cordially invited to celebrate your birthday.</div>
+      
+      <div class="invite-card-details">
+        <div class="invite-row">
+          <div class="invite-label">Date</div>
+          <div class="invite-val">TBD</div>
+        </div>
+        <div class="invite-row">
+          <div class="invite-label">Time</div>
+          <div class="invite-val">Also TBD</div>
+        </div>
+        <div class="invite-row">
+          <div class="invite-label">Overview</div>
+          <div class="invite-val prose">Consider this a formal invitation to a day of fun and games (and food and frolicking).</div>
+        </div>
+      </div>
+      
+      <button class="invite-cta" id="invite-accept-btn" onclick="dismissInvite()">Accept Protocol & Enter Games</button>
+      <div class="invite-seal">Approved by the President</div>
     </div>
   </div>
 </div>
@@ -259,7 +320,7 @@ body{
   </div>
 
   <div class="tab-panel active" id="tab-connections">
-    <div class="connections-wrapper">
+    <div class="connections-wrapper" id="connections-panel-box">
       <div class="game-title">Connections Matrix</div>
       <div class="game-desc">Isolate four conceptual alignments of four terms. Select items and submit configuration.</div>
       
@@ -331,15 +392,28 @@ body{
 </div>
 
 <script>
-// ═══ INTRO POPUP ═══
+// ═══ INTRO SEQUENTIAL WORKFLOW ═══
 function dismissPopup(){
   const o=document.getElementById('popup-overlay');
   o.style.transition='opacity .4s ease, transform .4s ease';
   o.style.opacity='0';o.style.transform='scale(0.98)';
-  setTimeout(()=>{o.style.display='none';document.getElementById('main-site').style.display='block'},400);
+  setTimeout(()=>{
+    o.style.display='none';
+    document.getElementById('invite-overlay').style.display='flex';
+  },400);
 }
 document.getElementById('popup-close-btn').addEventListener('click',dismissPopup);
 document.getElementById('popup-cta-btn').addEventListener('click',dismissPopup);
+
+function dismissInvite(){
+  const o=document.getElementById('invite-overlay');
+  o.style.transition='opacity .4s ease, transform .4s ease';
+  o.style.opacity='0';o.style.transform='scale(0.98)';
+  setTimeout(()=>{
+    o.style.display='none';
+    document.getElementById('main-site').style.display='block';
+  },400);
+}
 
 // ═══ TABS ═══
 function switchTab(name){
@@ -397,6 +471,7 @@ function setMessage(msg,duration=2500){
   const el=document.getElementById('conn-message');el.textContent=msg;
   if(duration)setTimeout(()=>{el.textContent='';},duration);
 }
+
 function submitGuess(){
   if(selectedWords.length!==4)return;
   const catNums=selectedWords.map(w=>CATEGORIES.find(c=>c.words.includes(w))?.number);
@@ -410,7 +485,13 @@ function submitGuess(){
     row.innerHTML=`<div class="solved-doodle">${cat.doodle}</div><div class="solved-info"><div class="solved-category">Configuration Category ${cat.number}: ${cat.label}</div><div class="solved-words">${cat.words.join(' · ')}</div></div>`;
     document.getElementById('solved-rows').appendChild(row);
     selectedWords=[];renderConnGrid();
-    setMessage(solvedCats.size===4?'Matrix Complete. Excellent Evaluation.':'Alignment Matches.',2000);
+    
+    if(solvedCats.size===4){
+      setMessage('Matrix Complete. Excellent Evaluation.', 0);
+      triggerConnectionsCelebration();
+    } else {
+      setMessage('Alignment Matches.', 2000);
+    }
   } else {
     attemptsLeft--;
     document.getElementById(`dot-${4-attemptsLeft-1}`).classList.add('used');
@@ -426,18 +507,39 @@ function submitGuess(){
 }
 renderConnGrid();
 
+function triggerConnectionsCelebration() {
+  const panel = document.getElementById('connections-panel-box');
+  const symbols = ['❤️', '✨', '⭐', '💖', '🎉'];
+  let loopCount = 0;
+  const burstInterval = setInterval(() => {
+    for (let i = 0; i < 6; i++) {
+      const el = document.createElement('div');
+      el.className = 'conn-celebration-element';
+      el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+      el.style.left = (Math.random() * 85 + 5) + '%';
+      el.style.bottom = '20px';
+      el.style.fontSize = (18 + Math.floor(Math.random() * 16)) + 'px';
+      el.style.setProperty('--r', ((Math.random() - 0.5) * 500) + 'deg');
+      panel.appendChild(el);
+      setTimeout(() => el.remove(), 2500);
+    }
+    loopCount++;
+    if (loopCount > 15) clearInterval(burstInterval);
+  }, 300);
+}
+
 // ═══ CROSSWORD ═══
 const WORDS_PLACED=[
   {word:"KOPITIAM",dir:"A",row:0,col:0,clue:"Highly frequented restaurant"},
   {word:"MOCHA",   dir:"D",row:-1,col:1,clue:"Adya's special coffee"},
-  {word:"MINI",    dir:"D",row:-3,col:3,clue:"Adya's victory, debt tbc"},
-  {word:"POOLDAWG",dir:"D",row:-5,col:6,clue:"Cue-wielding legend"},
-  {word:"TWO",     dir:"A",row:1,col:5,clue:"Number of faintings"},
-  {word:"LANGUR",  dir:"A",row:-2,col:6,clue:"Company, animal that peed"},
-  {word:"LANA",    dir:"D",row:-4,col:8,clue:"Common fun-time playlist singer"},
-  {word:"GRRR",    dir:"D",row:-2,col:9,clue:"Frequent retort, sound made by all the Category 4s"},
-  {word:"PEACH",   dir:"A",row:2,col:-3,clue:"Tastes like a plum?!"},
-  {word:"GEMS",    dir:"D",row:1,col:-2,clue:"Writer of emails, ruiner of intellect"},
+  {word:"GEMS",    dir:"D",row:-2,col:7,clue:"Writer of emails, ruiner of intellect"},
+  {word:"MINI",    dir:"A",row:0,col:7,clue:"Adya's victory, debt tbc"},
+  {word:"LANA",    dir:"D",row:-2,col:9,clue:"Common fun-time playlist singer"},
+  {word:"POOLDAWG",dir:"A",row:3,col:-4,clue:"Cue-wielding legend"},
+  {word:"TWO",     dir:"D",row:1,col:-3,clue:"Number of faintings"},
+  {word:"PEACH",   dir:"D",row:3,col:-4,clue:"Tastes like a plum?!"},
+  {word:"LANGUR",  dir:"A",row:5,col:-5,clue:"Company, animal that peed"},
+  {word:"GRRR",    dir:"D",row:5,col:-2,clue:"Frequent retort, sound made by all the Category 4s"},
 ];
 
 const cellData={};
@@ -582,7 +684,10 @@ function checkAllComplete(){
   if(all.every(([key,div])=>div.querySelector('input')?.value===cellData[key]?.letter))triggerExplosion();
 }
 
-// ═══ CLASSY CAT PHOTOGRAPHY RAIN CELEBRATION ═══
+// ═══ CLASSY SEPARATE CAT PRODUCTION RAIN CELEBRATION ═══
+// Configured array targeting local repository images explicitly
+const LOCAL_CATS=['cat1.png','cat2.png','cat3.png','cat4.png','cat5.png','cat6.png','cat7.png','cat8.png','cat9.png','cat10.png','cat11.png','cat12.png','cat13.png','cat14.png','cat15.png'];
+
 function triggerExplosion(){
   const overlay=document.getElementById('explosion-overlay');
   overlay.style.display='block';
@@ -590,10 +695,7 @@ function triggerExplosion(){
   const flash=document.createElement('div');flash.className='flash-white';overlay.appendChild(flash);
   setTimeout(()=>flash.remove(),400);
 
-  // Instantly deploy primary wave of images
-  for(let i=0;i<25;i++){spawnIndividualCat();}
-
-  // Indefinite recurring rain cycle initialization
+  for(let i=0; i<25; i++){spawnIndividualCat();}
   setInterval(spawnIndividualCat, 180);
 
   setTimeout(()=>{
@@ -607,25 +709,22 @@ function spawnIndividualCat(){
   const el=document.createElement('img');
   el.className='falling-cat';
   
-  // High-performance placeholder cat generation with dynamic cache busters for varied imagery
-  el.src=`https://cataas.com/cat?width=120&height=120&t=${Math.random()}`;
+  // Pick completely randomly from your set of local pictures
+  const randomCatFile = LOCAL_CATS[Math.floor(Math.random() * LOCAL_CATS.length)];
+  el.src = randomCatFile;
   
-  // Horizontal scattering configurations
   el.style.left=(Math.random()*100)+'vw';
   el.style.top='-80px';
   
-  // Velocity vectors and scaling formulas
   el.style.setProperty('--dur',(2.0 + Math.random()*2.5)+'s');
   el.style.setProperty('--drift',((Math.random()-0.5)*200)+'px');
   el.style.setProperty('--rot',((Math.random()-0.5)*720)+'deg');
   
-  const sizeValue=48 + Math.floor(Math.random()*36);
+  const sizeValue=54 + Math.floor(Math.random()*36);
   el.style.width=sizeValue+'px';
   el.style.height=sizeValue+'px';
   
   document.getElementById('explosion-overlay').appendChild(el);
-  
-  // Garbage collection: clear images from the system after viewport passage
   setTimeout(()=>el.remove(),5000);
 }
 
