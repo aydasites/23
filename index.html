@@ -31,36 +31,686 @@ body{
   overflow-x:hidden;
 }
 
-/* ── AD ── */
-#ad-overlay{position:fixed;inset:0;z-index:9999;background:#0a0010;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.ad-bg{position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 2px,rgba(255,0,100,.04) 2px,rgba(255,0,100,.04) 4px),linear-gradient(135deg,#0a0010,#200040,#000d00);animation:bgPulse 3s ease-in-out infinite}
+/* ── INTRO POPUP ── */
+#popup-overlay{position:fixed;inset:0;z-index:9999;background:#0a0010;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.popup-bg{position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 2px,rgba(255,0,100,.04) 2px,rgba(255,0,100,.04) 4px),linear-gradient(135deg,#0a0010,#200040,#000d00);animation:bgPulse 3s ease-in-out infinite}
 @keyframes bgPulse{0%,100%{opacity:1}50%{opacity:.8}}
-.ad-scanlines{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.18) 3px,rgba(0,0,0,.18) 4px)}
-.ad-content{position:relative;width:min(490px,94vw);background:#fff;border:4px solid #ff003c;box-shadow:0 0 50px rgba(255,0,60,.7),8px 8px 0 #ff003c;overflow:hidden;animation:adShake .12s ease-in-out infinite alternate}
-@keyframes adShake{from{transform:translate(0,0)}to{transform:translate(.6px,.4px) rotate(.15deg)}}
-.ad-header{background:linear-gradient(90deg,#ff003c,#ff6600,#ff003c);background-size:200% 100%;animation:hSlide 1.8s linear infinite;padding:9px 14px;display:flex;align-items:center;justify-content:space-between}
+.popup-scanlines{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.18) 3px,rgba(0,0,0,.18) 4px)}
+.popup-content{position:relative;width:min(490px,94vw);background:#fff;border:4px solid #ff003c;box-shadow:0 0 50px rgba(255,0,60,.7),8px 8px 0 #ff003c;overflow:hidden;animation:popupShake .12s ease-in-out infinite alternate}
+@keyframes popupShake{from{transform:translate(0,0)}to{transform:translate(.6px,.4px) rotate(.15deg)}}
+.popup-header{background:linear-gradient(90deg,#ff003c,#ff6600,#ff003c);background-size:200% 100%;animation:hSlide 1.8s linear infinite;padding:9px 14px;display:flex;align-items:center;justify-content:space-between}
 @keyframes hSlide{from{background-position:0 0}to{background-position:200% 0}}
-.ad-header-text{font-family:'Comic Sans MS',cursive;color:#fff;font-size:11px;font-weight:bold;text-transform:uppercase;letter-spacing:1px}
-.ad-close{background:rgba(0,0,0,.35);border:1.5px solid rgba(255,255,255,.5);color:#fff;width:24px;height:24px;border-radius:50%;cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;font-weight:bold;transition:background .2s}
-.ad-close:hover{background:rgba(255,0,60,.9)}
-.ad-body{padding:20px;background:#fff}
-.ad-badge{display:inline-block;background:#ff003c;color:#fff;font-size:9px;font-family:'Comic Sans MS',cursive;font-weight:bold;padding:2px 9px;border-radius:2px;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;animation:blink 1s step-end infinite}
+.popup-header-text{font-family:'Comic Sans MS',cursive;color:#fff;font-size:11px;font-weight:bold;text-transform:uppercase;letter-spacing:1px}
+.popup-close{background:rgba(0,0,0,.35);border:1.5px solid rgba(255,255,255,.5);color:#fff;width:24px;height:24px;border-radius:50%;cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;font-weight:bold;transition:background .2s}
+.popup-close:hover{background:rgba(255,0,60,.9)}
+.popup-body{padding:20px;background:#fff}
+.popup-badge{display:inline-block;background:#ff003c;color:#fff;font-size:9px;font-family:'Comic Sans MS',cursive;font-weight:bold;padding:2px 9px;border-radius:2px;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;animation:blink 1s step-end infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-.ad-headline{font-family:'Comic Sans MS',cursive;font-size:22px;color:#c00;line-height:1.2;margin-bottom:6px}
-.ad-sub{font-size:12px;color:#555;margin-bottom:14px;font-family:'Comic Sans MS',cursive}
-.ad-image-strip{display:flex;gap:6px;margin-bottom:14px}
-.ad-fake-img{flex:1;height:70px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:28px;position:relative;overflow:hidden}
-.ad-fake-img::after{content:'100% REAL';position:absolute;bottom:2px;left:0;right:0;text-align:center;font-size:7px;font-family:'Comic Sans MS',cursive;color:#fff;background:rgba(0,0,0,.55);padding:1px}
+.popup-headline{font-family:'Comic Sans MS',cursive;font-size:22px;color:#c00;line-height:1.2;margin-bottom:6px}
+.popup-sub{font-size:12px;color:#555;margin-bottom:14px;font-family:'Comic Sans MS',cursive}
+.popup-image-strip{display:flex;gap:6px;margin-bottom:14px}
+.popup-fake-img{flex:1;height:70px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:28px;position:relative;overflow:hidden}
+.popup-fake-img::after{content:'100% REAL';position:absolute;bottom:2px;left:0;right:0;text-align:center;font-size:7px;font-family:'Comic Sans MS',cursive;color:#fff;background:rgba(0,0,0,.55);padding:1px}
 .img1{background:linear-gradient(135deg,#ff9a9e,#fad0c4)}
 .img2{background:linear-gradient(135deg,#a18cd1,#fbc2eb)}
 .img3{background:linear-gradient(135deg,#fccb90,#d57eeb)}
-.ad-testimonial{background:#fffde7;border-left:3px solid #ffd600;padding:8px 10px;margin-bottom:14px;font-size:11px;font-family:'Comic Sans MS',cursive;color:#555;font-style:italic}
-.ad-testimonial strong{color:#333}
-.ad-features{display:flex;flex-direction:column;gap:4px;margin-bottom:16px}
-.ad-feature{display:flex;align-items:center;gap:6px;font-size:11px;font-family:'Comic Sans MS',cursive;color:#333}
-.ad-feature::before{content:'✅';font-size:10px}
-.ad-cta{width:100%;background:linear-gradient(90deg,#ff003c,#ff6600);color:#fff;border:none;padding:14px;font-family:'Comic Sans MS',cursive;font-size:16px;font-weight:bold;cursor:pointer;border-radius:4px;text-transform:uppercase;letter-spacing:1px;animation:ctaPulse .8s ease-in-out infinite alternate;box-shadow:0 4px 20px rgba(255,0,60,.5)}
+.popup-testimonial{background:#fffde7;border-left:3px solid #ffd600;padding:8px 10px;margin-bottom:14px;font-size:11px;font-family:'Comic Sans MS',cursive;color:#555;font-style:italic}
+.popup-testimonial strong{color:#333}
+.popup-features{display:flex;flex-direction:column;gap:4px;margin-bottom:16px}
+.popup-feature{display:flex;align-items:center;gap:6px;font-size:11px;font-family:'Comic Sans MS',cursive;color:#333}
+.popup-feature::before{content:'✅';font-size:10px}
+.popup-cta{width:100%;background:linear-gradient(90deg,#ff003c,#ff6600);color:#fff;border:none;padding:14px;font-family:'Comic Sans MS',cursive;font-size:16px;font-weight:bold;cursor:pointer;border-radius:4px;text-transform:uppercase;letter-spacing:1px;animation:ctaPulse .8s ease-in-out infinite alternate;box-shadow:0 4px 20px rgba(255,0,60,.5)}
 @keyframes ctaPulse{from{transform:scale(1)}to{transform:scale(1.03)}}
-.ad-disclaimer{font-size:7px;color:#aaa;margin-top:8px;text-align:center;font-family:Arial,sans-serif;line-height:1.4}
+.popup-disclaimer{font-size:7px;color:#aaa;margin-top:8px;text-align:center;font-family:Arial,sans-serif;line-height:1.4}
 
 /* ── MAIN ── */
+#main-site{display:none;min-height:100vh}
+
+/* ── HEADER ── */
+.site-header{background:var(--ink);padding:24px 28px;display:flex;align-items:center;gap:22px;position:relative;overflow:hidden;border-bottom:5px solid var(--yellow)}
+.site-header::before{content:'';position:absolute;inset:0;background:repeating-conic-gradient(from 0deg at 12% 50%,rgba(255,224,51,.07) 0deg 4deg,transparent 4deg 10deg)}
+.site-header::after{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 15% 50%,rgba(242,63,122,.28) 0%,transparent 55%),radial-gradient(ellipse at 85% 50%,rgba(0,201,177,.16) 0%,transparent 50%)}
+.header-bear-img{width:96px;height:96px;border-radius:50%;border:4px solid var(--yellow);outline:4px solid var(--ink);object-fit:cover;flex-shrink:0;position:relative;z-index:2;box-shadow:6px 6px 0 var(--pink);animation:bearBob 2.4s ease-in-out infinite}
+@keyframes bearBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.header-text{position:relative;z-index:2}
+.header-eyebrow{font-family:'Bangers',cursive;font-size:14px;color:var(--teal);letter-spacing:4px;margin-bottom:2px;text-shadow:1px 1px 0 var(--ink)}
+.header-title{font-family:'Bangers',cursive;font-size:clamp(30px,5.5vw,56px);color:var(--yellow);line-height:1;text-shadow:3px 3px 0 var(--ink),-1px -1px 0 var(--ink),1px -1px 0 var(--ink),-1px 1px 0 var(--ink);letter-spacing:2px}
+.header-title .bear{color:var(--pink)}
+.header-sub{font-size:12px;color:rgba(255,248,240,.5);margin-top:6px;font-style:italic}
+.header-starburst{position:absolute;right:20px;top:50%;z-index:3;background:var(--yellow);width:74px;height:74px;clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);display:flex;align-items:center;justify-content:center;font-family:'Bangers',cursive;font-size:11px;text-align:center;color:var(--ink);line-height:1.2;animation:starSpin 6s linear infinite}
+@keyframes starSpin{from{transform:translateY(-50%) rotate(-8deg)}to{transform:translateY(-50%) rotate(352deg)}}
+
+/* ── TABS ── */
+.tabs{display:flex;background:var(--ink);padding:0 24px;border-bottom:4px solid var(--yellow)}
+.tab-btn{font-family:'Bangers',cursive;font-size:18px;letter-spacing:2px;color:rgba(255,248,240,.35);background:none;border:none;padding:14px 24px;cursor:pointer;border-bottom:4px solid transparent;margin-bottom:-4px;transition:all .15s}
+.tab-btn.active{color:var(--yellow);border-bottom-color:var(--yellow)}
+.tab-btn:hover:not(.active){color:rgba(255,248,240,.7)}
+.tab-panel{display:none}
+.tab-panel.active{display:block;background:var(--panel);position:relative}
+.tab-panel.active::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:var(--dot);background-size:8px 8px;opacity:.35;z-index:0}
+.connections-wrapper,.crossword-wrapper{position:relative;z-index:1}
+
+/* ── CONNECTIONS ── */
+.connections-wrapper{max-width:660px;margin:0 auto;padding:30px 22px}
+.game-title{font-family:'Bangers',cursive;font-size:32px;letter-spacing:3px;line-height:1;margin-bottom:6px;text-shadow:2px 2px 0 var(--ink)}
+.game-title-conn{color:var(--pink)}
+.game-title-cross{color:var(--teal)}
+.game-desc{font-size:13px;color:rgba(13,13,13,.6);margin-bottom:18px}
+.info-panel{position:relative;background:#fff;border:3px solid var(--ink);border-radius:12px;padding:14px 16px;margin-bottom:22px;font-size:12px;color:rgba(13,13,13,.75);line-height:1.8;box-shadow:4px 4px 0 var(--ink)}
+.info-panel::after{content:'';position:absolute;bottom:-18px;left:28px;border:9px solid transparent;border-top-color:var(--ink)}
+.info-panel::before{content:'';position:absolute;bottom:-12px;left:30px;border:7px solid transparent;border-top-color:#fff;z-index:1}
+.info-panel strong{color:var(--pink);font-weight:700}
+.conn-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:22px}
+.conn-tile{background:#fff;border:3px solid var(--ink);border-radius:8px;padding:14px 6px;text-align:center;font-family:'Bangers',cursive;font-size:clamp(10px,2.3vw,15px);letter-spacing:.5px;cursor:pointer;transition:all .12s;user-select:none;min-height:64px;display:flex;align-items:center;justify-content:center;box-shadow:3px 3px 0 var(--ink)}
+.conn-tile:hover{transform:translate(-2px,-3px);box-shadow:5px 5px 0 var(--pink)}
+.conn-tile.selected{background:var(--yellow);transform:translate(-2px,-3px);box-shadow:5px 5px 0 var(--ink)}
+.conn-tile.solved{cursor:default;transform:none;box-shadow:3px 3px 0 var(--ink)}
+.conn-tile.wrong-shake{animation:wrongShake .4s ease}
+@keyframes wrongShake{0%,100%{transform:translateX(0)}20%{transform:translateX(-7px)}40%{transform:translateX(7px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+.solved-row{border:3px solid var(--ink);border-radius:10px;padding:12px 16px;margin-bottom:8px;display:flex;align-items:center;gap:12px;animation:solvedPop .4s cubic-bezier(.34,1.56,.64,1);box-shadow:4px 4px 0 var(--ink)}
+.solved-row-1{background:#fce4ec}.solved-row-2{background:#e0f7f4}.solved-row-3{background:#ede7f6}.solved-row-4{background:#fff3e0}
+@keyframes solvedPop{from{transform:scale(.8) rotate(-2deg);opacity:0}to{transform:scale(1) rotate(0);opacity:1}}
+.solved-doodle{flex-shrink:0}
+.solved-category{font-family:'Bangers',cursive;font-size:14px;letter-spacing:2px;margin-bottom:2px}
+.solved-row-1 .solved-category{color:var(--pink)}.solved-row-2 .solved-category{color:var(--teal)}.solved-row-3 .solved-category{color:var(--purple)}.solved-row-4 .solved-category{color:var(--orange)}
+.solved-words{font-size:11px;color:rgba(13,13,13,.6);text-transform:uppercase;letter-spacing:.5px}
+.conn-controls{display:flex;gap:10px;flex-wrap:wrap}
+.btn{font-family:'Bangers',cursive;font-size:16px;letter-spacing:1px;padding:9px 22px;border:3px solid var(--ink);cursor:pointer;transition:all .12s;box-shadow:3px 3px 0 var(--ink)}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink)}
+.btn:active{transform:translate(1px,1px);box-shadow:1px 1px 0 var(--ink)}
+.btn-primary{background:var(--pink);color:#fff}
+.btn-primary:disabled{opacity:.35;cursor:not-allowed;transform:none;box-shadow:3px 3px 0 var(--ink)}
+.btn-secondary{background:#fff;color:var(--ink)}
+.attempts-row{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:12px;color:rgba(13,13,13,.55)}
+.attempt-dot{width:12px;height:12px;border-radius:50%;background:var(--pink);border:2px solid var(--ink);transition:background .3s}
+.attempt-dot.used{background:rgba(13,13,13,.12)}
+.conn-message{margin-top:14px;min-height:32px;font-family:'Bangers',cursive;font-size:24px;letter-spacing:2px;color:var(--red);text-align:center;text-shadow:1px 1px 0 rgba(0,0,0,.15)}
+
+/* ── CROSSWORD ── */
+.crossword-wrapper{max-width:760px;margin:0 auto;padding:30px 22px}
+.crossword-layout{display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap}
+
+/* timer */
+.crossword-timer{font-family:'Bangers',cursive;margin-bottom:18px;display:flex;align-items:baseline;gap:12px}
+#timer-display{font-size:40px;color:var(--teal);display:inline-block;text-shadow:2px 2px 0 var(--ink);transition:font-size .5s cubic-bezier(.34,1.56,.64,1),color .4s}
+.timer-label{font-size:11px;font-weight:400;font-family:'DM Sans',sans-serif;color:rgba(13,13,13,.4);text-transform:uppercase;letter-spacing:2px}
+
+/* CSS-grid crossword — absolute positioning, only real cells shown */
+.cw-grid-outer{
+  position:relative;
+  flex-shrink:0;
+  background:transparent;
+}
+.cw-cell{
+  position:absolute;
+  width:var(--cell);
+  height:var(--cell);
+  background:#fff;
+  border:2.5px solid var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;
+}
+.cw-num{
+  position:absolute;
+  top:1px;left:2px;
+  font-size:8px;font-weight:700;
+  color:rgba(13,13,13,.45);
+  font-family:'DM Sans',sans-serif;
+  line-height:1;pointer-events:none;
+}
+.cw-cell input{
+  width:100%;height:100%;
+  border:none;outline:none;background:transparent;
+  text-align:center;
+  font-family:'Bangers',cursive;font-size:17px;
+  text-transform:uppercase;color:var(--ink);
+  cursor:pointer;caret-color:var(--teal);
+  padding-top:6px;
+}
+.cw-cell.active-word{background:rgba(0,201,177,.18)}
+.cw-cell.active-cell{background:rgba(0,201,177,.48)}
+.cw-cell.correct{background:rgba(80,210,130,.25)}
+.cw-cell.correct input{color:#1a7a3a}
+.cw-cell.incorrect input{color:var(--red)}
+
+/* clues */
+.clues-panel{flex:1;min-width:190px}
+.clues-section{margin-bottom:20px}
+.clues-heading{font-family:'Bangers',cursive;font-size:18px;letter-spacing:3px;color:var(--teal);margin-bottom:10px;padding-bottom:6px;border-bottom:3px solid var(--ink);text-shadow:1px 1px 0 var(--ink)}
+.clue-item{display:flex;gap:8px;margin-bottom:8px;font-size:13px;cursor:pointer;padding:5px 7px;border-radius:4px;transition:background .12s;line-height:1.4;border:2px solid transparent}
+.clue-item:hover{background:rgba(0,201,177,.1);border-color:rgba(0,201,177,.3)}
+.clue-item.active{background:rgba(0,201,177,.22);border-color:var(--teal)}
+.clue-num{font-family:'Bangers',cursive;font-size:14px;color:var(--teal);flex-shrink:0;min-width:20px;text-shadow:1px 1px 0 var(--ink)}
+.clue-text{color:rgba(13,13,13,.72)}
+.clue-item.solved-clue .clue-text{text-decoration:line-through;opacity:.4}
+
+/* ── EXPLOSION ── */
+#explosion-overlay{display:none;position:fixed;inset:0;z-index:5000;pointer-events:none;overflow:hidden}
+.shrapnel{position:absolute;pointer-events:none;animation:shrapnelFly var(--dur,1s) cubic-bezier(.15,.5,.5,1) forwards;transform-origin:center}
+@keyframes shrapnelFly{0%{transform:translate(0,0) rotate(0deg) scale(1);opacity:1}60%{opacity:1}100%{transform:translate(var(--tx),var(--ty)) rotate(var(--rot)) scale(var(--sc,.3));opacity:0}}
+.flash-white{position:absolute;inset:0;background:#fff;animation:flashOut .3s ease forwards}
+@keyframes flashOut{0%{opacity:1}100%{opacity:0}}
+.bang-text{position:absolute;font-family:'Bangers',cursive;color:var(--yellow);text-shadow:4px 4px 0 var(--ink),-2px -2px 0 var(--ink),2px -2px 0 var(--ink),-2px 2px 0 var(--ink);pointer-events:none;transform:translate(-50%,-50%) scale(0) rotate(-15deg);opacity:0}
+.bang-text.pop{animation:bangPop .45s cubic-bezier(.34,1.56,.64,1) forwards}
+@keyframes bangPop{0%{transform:translate(-50%,-50%) scale(0) rotate(-15deg);opacity:0}70%{opacity:1}100%{transform:translate(-50%,-50%) scale(1) rotate(var(--r,0deg));opacity:1}}
+.crack-svg{position:absolute;inset:0;pointer-events:none;animation:crackIn .12s ease forwards}
+@keyframes crackIn{from{opacity:0}to{opacity:1}}
+
+/* ── CELEBRATION ── */
+.celebration-banner{display:none;background:var(--yellow);border-top:5px solid var(--ink);padding:20px;text-align:center;font-family:'Bangers',cursive;font-size:clamp(18px,4vw,28px);color:var(--ink);letter-spacing:4px;text-shadow:2px 2px 0 var(--pink);animation:celebWiggle .5s ease infinite alternate}
+@keyframes celebWiggle{from{transform:skewX(-1deg)}to{transform:skewX(1deg)}}
+
+/* ── MOBILE ── */
+@media(max-width:600px){
+  .crossword-layout{flex-direction:column}
+  .clues-panel{width:100%}
+  :root{--cell:28px}
+  .conn-grid{gap:6px}
+  .conn-tile{min-height:52px;padding:10px 4px;font-size:9px}
+  .site-header{padding:16px}
+  .crossword-wrapper,.connections-wrapper{padding:18px 14px}
+  #timer-display{font-size:32px}
+  .header-starburst{display:none}
+  .cw-cell input{font-size:13px;padding-top:4px}
+  .cw-num{font-size:6px}
+}
+</style>
+</head>
+<body>
+
+<div id="popup-overlay">
+  <div class="popup-bg"></div>
+  <div class="popup-scanlines"></div>
+  <div class="popup-content">
+    <div class="popup-header">
+      <span class="popup-header-text">⚠️ IMPORTANT NOTIFICATION FOR VISHAK</span>
+      <button class="popup-close" id="popup-close-btn">✕</button>
+    </div>
+    <div class="popup-body">
+      <div class="popup-badge">🔴 LIVE · INNSBRUCK, AT</div>
+      <div class="popup-headline">Hey Vishak! Taken men<br>near YOU are WAITING 🥺</div>
+      <div class="popup-sub">843 emotionally unavailable men in Innsbruck verified in the last 3 minutes</div>
+      <div class="popup-image-strip">
+        <div class="popup-fake-img img1">🧔</div>
+        <div class="popup-fake-img img2">🧔‍♂️</div>
+        <div class="popup-fake-img img3">👨‍💼</div>
+      </div>
+      <div class="popup-testimonial"><strong>Hans K., 38, Munich:</strong> "I thought I was happy in my marriage. Then I found EuroAffair™. Now I send 47 texts a day to strangers. 10/10."</div>
+      <div class="popup-features">
+        <div class="popup-feature">Background-checked (mostly)</div>
+        <div class="popup-feature">Verified profile photos from 2011</div>
+        <div class="popup-feature">Certified emotionally unavailable men</div>
+        <div class="popup-feature">Discreet billing as "BREAD SUBSCRIPTION"</div>
+        <div class="popup-feature">Free mood ring with first match</div>
+      </div>
+      <button class="popup-cta" id="popup-cta-btn">YES! FIND MY TAKEN MAN NOW 💘</button>
+      <div class="popup-disclaimer">By clicking you agree that EuroAffair™ is not responsible for consequences, regrets, chaos, or bread subscriptions. Results not typical. Men depicted are actors. This is definitely not a birthday thing.</div>
+    </div>
+  </div>
+</div>
+
+<div id="explosion-overlay"></div>
+
+<div id="main-site">
+  <div class="site-header">
+    <img src="birthday-bear.png" alt="Birthday bear" class="header-bear-img" onerror="this.style.display='none'">
+    <div class="header-text">
+      <div class="header-eyebrow">★ Happy Birthday ★</div>
+      <div class="header-title">HBD TO THE <span class="bear">POLAR BEAR</span> 🐻‍❄️</div>
+      <div class="header-sub">your annual obligatory games moment</div>
+    </div>
+    <div class="header-starburst">IT'S YOUR<br>DAY!!</div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('connections')">Connections</button>
+    <button class="tab-btn" onclick="switchTab('crossword')">Mini Crossword</button>
+  </div>
+
+  <div class="tab-panel active" id="tab-connections">
+    <div class="connections-wrapper">
+      <div class="game-title game-title-conn">CONNECTIONS!</div>
+      <div class="game-desc">Find four groups of four. Pick tiles and hit Submit.</div>
+      <div class="info-panel">
+        <strong>Colourblind-friendly:</strong> all tiles are the same colour intentionally. Categories numbered 1 (easiest) → 4 (hardest). Solve a group to reveal what it was, plus a lil doodle 🎨
+      </div>
+      <div id="solved-rows"></div>
+      <div class="conn-grid" id="conn-grid"></div>
+      <div class="conn-controls">
+        <button class="btn btn-secondary" onclick="shuffleTiles()">Shuffle</button>
+        <button class="btn btn-secondary" onclick="deselectAll()">Deselect All</button>
+        <button class="btn btn-primary" id="submit-btn" onclick="submitGuess()" disabled>Submit</button>
+      </div>
+      <div class="conn-message" id="conn-message"></div>
+      <div class="attempts-row">
+        <span>Attempts left:</span>
+        <div class="attempt-dot" id="dot-0"></div>
+        <div class="attempt-dot" id="dot-1"></div>
+        <div class="attempt-dot" id="dot-2"></div>
+        <div class="attempt-dot" id="dot-3"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="tab-crossword">
+    <div class="crossword-wrapper">
+      <div class="game-title game-title-cross">MINI CROSSWORD!</div>
+      <div class="game-desc">Click a cell and type. Click again to toggle across/down.</div>
+      <div class="crossword-timer">
+        <span id="timer-display">00:00</span>
+        <span class="timer-label">and growing…</span>
+      </div>
+      <div class="crossword-layout">
+        <div class="cw-grid-outer" id="cw-grid-outer"></div>
+        <div class="clues-panel">
+          <div class="clues-section">
+            <div class="clues-heading">Across</div>
+            <div id="clues-across"></div>
+          </div>
+          <div class="clues-section">
+            <div class="clues-heading">Down</div>
+            <div id="clues-down"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="celebration-banner" id="celebration-banner">
+    ★ KA-BOOM!! YOU DID IT, POLAR BEAR!! HAPPY BIRTHDAY VISHAK!! ★
+  </div>
+</div>
+
+<script>
+// ═══ INTRO POPUP ═══
+function dismissPopup(){
+  const o=document.getElementById('popup-overlay');
+  o.style.transition='opacity .5s,transform .5s';
+  o.style.opacity='0';o.style.transform='scale(1.06)';
+  setTimeout(()=>{o.style.display='none';document.getElementById('main-site').style.display='block'},500);
+}
+document.getElementById('popup-close-btn').addEventListener('click',dismissPopup);
+document.getElementById('popup-cta-btn').addEventListener('click',dismissPopup);
+
+// ═══ TABS ═══
+function switchTab(name){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelector(`[onclick="switchTab('${name}')"]`).classList.add('active');
+  document.getElementById(`tab-${name}`).classList.add('active');
+}
+
+// ═══ CONNECTIONS ═══
+const CATEGORIES=[
+  {number:1,label:"Trips We've Taken",
+   words:["BOMBAY","SETHAN","HAMPI","DELHI"],
+   rowClass:"solved-row-1",
+   doodle:`<svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect x="7" y="13" width="22" height="16" rx="2" stroke="#f23f7a" stroke-width="2.5"/><path d="M13 13V10a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v3" stroke="#f23f7a" stroke-width="2.5"/><line x1="18" y1="13" x2="18" y2="29" stroke="#f23f7a" stroke-width="2"/><circle cx="7" cy="25" r="2.5" fill="#f23f7a"/><circle cx="29" cy="25" r="2.5" fill="#f23f7a"/></svg>`},
+  {number:2,label:"Adya's Tattoos",
+   words:["DRAGON","FISH","FOX","MOUNTAINS"],
+   rowClass:"solved-row-2",
+   doodle:`<svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M18 4 L20 14 L30 12 L22 18 L28 28 L18 22 L8 28 L14 18 L6 12 L16 14 Z" stroke="#00c9b1" stroke-width="2" fill="rgba(0,201,177,.15)" stroke-linejoin="round"/><circle cx="18" cy="18" r="3.5" fill="#00c9b1"/></svg>`},
+  {number:3,label:"Kung Fu Panda Characters",
+   words:["PANDA","VIPER","PRAYING MANTIS","GOOSE"],
+   rowClass:"solved-row-3",
+   doodle:`<svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="11" stroke="#7c3aed" stroke-width="2.5"/><circle cx="13" cy="15" r="3.5" fill="#7c3aed" opacity=".3"/><circle cx="23" cy="15" r="3.5" fill="#7c3aed" opacity=".3"/><circle cx="13" cy="15" r="1.8" fill="#7c3aed"/><circle cx="23" cy="15" r="1.8" fill="#7c3aed"/><path d="M14 23 Q18 27 22 23" stroke="#7c3aed" stroke-width="2" fill="none" stroke-linecap="round"/></svg>`},
+  {number:4,label:"Animals You Self-Identify With",
+   words:["POLAR BEAR","WOLF","PANTHER","BOSSDAWG"],
+   rowClass:"solved-row-4",
+   doodle:`<svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="20" r="8" stroke="#ff6b1a" stroke-width="2.5"/><circle cx="12" cy="13" r="3.2" stroke="#ff6b1a" stroke-width="2"/><circle cx="24" cy="13" r="3.2" stroke="#ff6b1a" stroke-width="2"/><circle cx="16" cy="22" r="1.8" fill="#ff6b1a"/><circle cx="20" cy="22" r="1.8" fill="#ff6b1a"/><circle cx="18" cy="19" r="2.2" fill="#ff6b1a"/></svg>`}
+];
+
+function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+
+let allWords=shuffle(CATEGORIES.flatMap(c=>c.words.map(w=>({word:w,catNumber:c.number}))));
+let selectedWords=[],solvedCats=new Set(),attemptsLeft=4;
+
+function renderConnGrid(){
+  const grid=document.getElementById('conn-grid');
+  grid.innerHTML='';
+  allWords.forEach(({word})=>{
+    const tile=document.createElement('div');
+    tile.className='conn-tile';tile.textContent=word;tile.dataset.word=word;
+    tile.addEventListener('click',()=>toggleTile(tile,word));
+    grid.appendChild(tile);
+  });
+}
+function toggleTile(tile,word){
+  if(tile.classList.contains('solved'))return;
+  const idx=selectedWords.indexOf(word);
+  if(idx>-1){selectedWords.splice(idx,1);tile.classList.remove('selected');}
+  else{if(selectedWords.length>=4)return;selectedWords.push(word);tile.classList.add('selected');}
+  document.getElementById('submit-btn').disabled=selectedWords.length!==4;
+}
+function deselectAll(){selectedWords=[];document.querySelectorAll('.conn-tile').forEach(t=>t.classList.remove('selected'));document.getElementById('submit-btn').disabled=true;}
+function shuffleTiles(){allWords=shuffle(allWords);renderConnGrid();}
+function setMessage(msg,duration=2500){
+  const el=document.getElementById('conn-message');el.textContent=msg;
+  if(duration)setTimeout(()=>{el.textContent='';},duration);
+}
+function submitGuess(){
+  if(selectedWords.length!==4)return;
+  const catNums=selectedWords.map(w=>CATEGORIES.find(c=>c.words.includes(w))?.number);
+  const allSame=catNums.every(n=>n===catNums[0]);
+  if(allSame){
+    const cat=CATEGORIES.find(c=>c.number===catNums[0]);
+    solvedCats.add(cat.number);
+    allWords=allWords.filter(w=>!selectedWords.includes(w.word));
+    const row=document.createElement('div');
+    row.className=`solved-row ${cat.rowClass}`;
+    row.innerHTML=`<div class="solved-doodle">${cat.doodle}</div><div class="solved-info"><div class="solved-category">CAT ${cat.number}: ${cat.label}</div><div class="solved-words">${cat.words.join(' · ')}</div></div>`;
+    document.getElementById('solved-rows').appendChild(row);
+    selectedWords=[];renderConnGrid();
+    setMessage(solvedCats.size===4?'🎉 ALL OF THEM!!':'✦ CORRECT!!',2000);
+    if(solvedCats.size===4)setTimeout(()=>setMessage('★ HAPPY BIRTHDAY VISHAK!! ★',0),2500);
+  } else {
+    attemptsLeft--;
+    document.getElementById(`dot-${4-attemptsLeft-1}`).classList.add('used');
+    const maxSame=Math.max(...[1,2,3,4].map(n=>catNums.filter(x=>x===n).length));
+    setMessage(maxSame===3?'ONE AWAY... 👀':attemptsLeft===0?'NO MORE TRIES 😔':'NOPE! TRY AGAIN.');
+    document.querySelectorAll('.conn-tile.selected').forEach(t=>{t.classList.add('wrong-shake');setTimeout(()=>t.classList.remove('wrong-shake'),500);});
+    if(attemptsLeft===0){
+      document.getElementById('submit-btn').disabled=true;
+      document.querySelectorAll('.conn-tile').forEach(t=>{t.classList.remove('selected');t.style.opacity='.4';});
+      selectedWords=[];
+    }
+  }
+}
+renderConnGrid();
+
+// ═══ CROSSWORD ═══
+const WORDS_PLACED=[
+  {word:"KOPITIAM",dir:"A",row:2,col:0,clue:"Highly frequented restaurant"},
+  {word:"MOCHA",   dir:"D",row:1,col:1,clue:"Adya's special coffee"},
+  {word:"TWO",     dir:"D",row:2,col:4,clue:"Number of faintings"},
+  {word:"POOLDAWG",dir:"D",row:-3,col:6,clue:"Cue-wielding legend"},
+  {word:"LANGUR",  dir:"A",row:10,col:0,clue:"Company, animal that peed"},
+  {word:"LANA",    dir:"D",row:10,col:0,clue:"Common fun-time playlist singer"},
+  {word:"MINI",    dir:"D",row:8,col:2,clue:"Adya's victory, debt tbc"},
+  {word:"GRRR",    dir:"D",row:9,col:5,clue:"Frequent retort, sound made by all the Category 4s"},
+  {word:"PEACH",   dir:"A",row:15,col:4,clue:"Tastes like a plum?!"},
+  {word:"GEMS",    dir:"D",row:14,col:5,clue:"Writer of emails, ruiner of intellect"},
+];
+
+const cellData={};
+WORDS_PLACED.forEach(wp=>{
+  for(let i=0;i<wp.word.length;i++){
+    const r=wp.row+(wp.dir==='D'?i:0);
+    const c=wp.col+(wp.dir==='A'?i:0);
+    const key=`${r},${c}`;
+    if(!cellData[key])cellData[key]={letter:wp.word[i],words:[]};
+    cellData[key].words.push(wp);
+  }
+});
+
+let clueNum=1;
+const wordNumbers={},numberedCells={};
+const allRCs=Object.keys(cellData).map(k=>k.split(',').map(Number)).sort((a,b)=>a[0]-b[0]||a[1]-b[1]);
+allRCs.forEach(([r,c])=>{
+  const isA=WORDS_PLACED.some(w=>w.dir==='A'&&w.row===r&&w.col===c);
+  const isD=WORDS_PLACED.some(w=>w.dir==='D'&&w.row===r&&w.col===c);
+  if(isA||isD){
+    numberedCells[`${r},${c}`]=clueNum;
+    if(isA){const wp=WORDS_PLACED.find(w=>w.dir==='A'&&w.row===r&&w.col===c);wordNumbers[`${wp.word}-A`]=clueNum;}
+    if(isD){const wp=WORDS_PLACED.find(w=>w.dir==='D'&&w.row===r&&w.col===c);wordNumbers[`${wp.word}-D`]=clueNum;}
+    clueNum++;
+  }
+});
+
+const allRows=allRCs.map(([r])=>r),allCols=allRCs.map(([,c])=>c);
+const minRow=Math.min(...allRows),maxRow=Math.max(...allRows);
+const minCol=Math.min(...allCols),maxCol=Math.max(...allCols);
+const CELL=36;
+
+const outer=document.getElementById('cw-grid-outer');
+const gridW=(maxCol-minCol+1)*CELL;
+const gridH=(maxRow-minRow+1)*CELL;
+outer.style.width=gridW+'px';
+outer.style.height=gridH+'px';
+
+const inputMap={};
+allRCs.forEach(([r,c])=>{
+  const left=(c-minCol)*CELL,top=(r-minRow)*CELL;
+  const div=document.createElement('div');
+  div.className='cw-cell';
+  div.style.left=left+'px';div.style.top=top+'px';
+  const num=numberedCells[`${r},${c}`];
+  if(num){const sp=document.createElement('span');sp.className='cw-num';sp.textContent=num;div.appendChild(sp);}
+  const inp=document.createElement('input');
+  inp.maxLength=1;inp.setAttribute('autocomplete','off');inp.setAttribute('autocorrect','off');inp.setAttribute('spellcheck','false');
+  inp.dataset.answer=cellData[`${r},${c}`].letter;
+  div.appendChild(inp);
+  inputMap[`${r},${c}`]=div;
+  div.addEventListener('click',()=>handleCellClick(r,c));
+  inp.addEventListener('input',e=>handleInput(e,r,c));
+  inp.addEventListener('keydown',e=>handleKeydown(e,r,c));
+  outer.appendChild(div);
+});
+
+let activeDir='A',activeWordKey=null,timerStarted=false,timerInterval=null,timerSeconds=0;
+
+function getWordCells(wp){
+  const cells=[];
+  for(let i=0;i<wp.word.length;i++)cells.push({r:wp.row+(wp.dir==='D'?i:0),c:wp.col+(wp.dir==='A'?i:0)});
+  return cells;
+}
+function getActiveWord(r,c,dir){return WORDS_PLACED.find(w=>w.dir===dir&&getWordCells(w).some(cell=>cell.r===r&&cell.c===c));}
+
+function clearHighlights(){Object.values(inputMap).forEach(d=>d.classList.remove('active-word','active-cell'));}
+function highlightWord(wp){
+  if(!wp)return;
+  getWordCells(wp).forEach(({r,c})=>{const d=inputMap[`${r},${c}`];if(d)d.classList.add('active-word');});
+}
+function highlightCell(r,c){const d=inputMap[`${r},${c}`];if(d)d.classList.add('active-cell');}
+
+function handleCellClick(r,c){
+  const cell=cellData[`${r},${c}`];if(!cell)return;
+  const div=inputMap[`${r},${c}`];
+  const isActive=div&&div.classList.contains('active-cell');
+  const dirs=cell.words.map(w=>w.dir);const hasBoth=dirs.includes('A')&&dirs.includes('D');
+  if(isActive&&hasBoth)activeDir=activeDir==='A'?'D':'A';
+  else if(!dirs.includes(activeDir))activeDir=dirs[0];
+  const wp=getActiveWord(r,c,activeDir);
+  activeWordKey=wp?`${wp.word}-${wp.dir}`:null;
+  clearHighlights();highlightWord(wp);highlightCell(r,c);
+  const inp=div?.querySelector('input');if(inp)inp.focus();
+  updateClueHighlight();
+}
+function updateClueHighlight(){
+  document.querySelectorAll('.clue-item').forEach(el=>el.classList.remove('active'));
+  if(activeWordKey){const el=document.querySelector(`[data-clue-key="${activeWordKey}"]`);if(el){el.classList.add('active');el.scrollIntoView({block:'nearest'});}}
+}
+
+function updateTimerSize(){
+  const el=document.getElementById('timer-display');
+  const t=Math.min(timerSeconds/300,1);
+  const ease=t*t*(3-2*t);
+  el.style.fontSize=(40+Math.round(ease*40))+'px';
+  const hue=timerSeconds<150?Math.round(180-(timerSeconds/150)*130):Math.max(0,50-Math.round(((timerSeconds-150)/150)*50));
+  el.style.color=`hsl(${hue},82%,40%)`;
+  el.style.textShadow='2px 2px 0 var(--ink)';
+}
+function startTimerIfNeeded(){
+  if(timerStarted)return;timerStarted=true;
+  timerInterval=setInterval(()=>{
+    timerSeconds++;
+    const m=String(Math.floor(timerSeconds/60)).padStart(2,'0');
+    const s=String(timerSeconds%60).padStart(2,'0');
+    document.getElementById('timer-display').textContent=`${m}:${s}`;
+    updateTimerSize();
+  },1000);
+}
+
+function handleInput(e,r,c){
+  startTimerIfNeeded();
+  const inp=e.target;
+  inp.value=inp.value.toUpperCase().replace(/[^A-Z]/g,'').slice(-1);
+  checkCell(r,c);checkAllComplete();
+  if(inp.value){
+    const wp=getActiveWord(r,c,activeDir);
+    if(wp){const cells=getWordCells(wp);const idx=cells.findIndex(x=>x.r===r&&x.c===c);
+      if(idx<cells.length-1){const next=cells[idx+1];handleCellClick(next.r,next.c);}}
+  }
+}
+function handleKeydown(e,r,c){
+  if(e.key==='Backspace'){
+    const inp=inputMap[`${r},${c}`]?.querySelector('input');
+    if(inp&&inp.value===''){
+      const wp=getActiveWord(r,c,activeDir);
+      if(wp){const cells=getWordCells(wp);const idx=cells.findIndex(x=>x.r===r&&x.c===c);
+        if(idx>0){const prev=cells[idx-1];const pi=inputMap[`${prev.r},${prev.c}`]?.querySelector('input');if(pi){pi.value='';checkCell(prev.r,prev.c);}handleCellClick(prev.r,prev.c);}}
+    }
+  }
+  const arrows={ArrowRight:[0,1],ArrowLeft:[0,-1],ArrowDown:[1,0],ArrowUp:[-1,0]};
+  if(arrows[e.key]){
+    e.preventDefault();
+    const [dr,dc]=arrows[e.key];
+    const nr=r+dr,nc=c+dc;
+    if(inputMap[`${nr},${nc}`])handleCellClick(nr,nc);
+  }
+}
+function checkCell(r,c){
+  const div=inputMap[`${r},${c}`];if(!div)return;
+  const inp=div.querySelector('input');if(!inp)return;
+  div.classList.remove('correct','incorrect');
+  if(inp.value){if(inp.value===inp.dataset.answer)div.classList.add('correct');else div.classList.add('incorrect');}
+}
+function checkAllComplete(){
+  const all=Object.entries(inputMap);
+  if(all.every(([key,div])=>div.querySelector('input')?.value===cellData[key]?.letter))triggerExplosion();
+}
+
+// ═══ EXPLOSION ═══
+function triggerExplosion(){
+  clearInterval(timerInterval);
+  const overlay=document.getElementById('explosion-overlay');
+  overlay.style.display='block';
+
+  const flash=document.createElement('div');flash.className='flash-white';overlay.appendChild(flash);
+
+  const timerEl=document.getElementById('timer-display');
+  let count=0;
+  const chaos=setInterval(()=>{
+    const rnd=Math.floor(Math.random()*5999);
+    timerEl.textContent=`${String(Math.floor(rnd/60)).padStart(2,'0')}:${String(rnd%60).padStart(2,'0')}`;
+    timerEl.style.fontSize=`${28+Math.floor(Math.random()*80)}px`;
+    timerEl.style.color=['#f23f7a','#ff6b1a','#7c3aed','#e5142a','#ffe033','#00c9b1','#2563eb','#0d0d0d'][count%7];
+    timerEl.style.transform=`rotate(${(Math.random()-.5)*44}deg) scale(${.5+Math.random()*1.6}) skewX(${(Math.random()-.5)*22}deg)`;
+    timerEl.style.letterSpacing=`${Math.random()*18}px`;
+    timerEl.style.textShadow=`${(Math.random()-.5)*10}px ${(Math.random()-.5)*10}px 0 #0d0d0d`;
+    count++;
+    if(count>30){
+      clearInterval(chaos);
+      timerEl.style.cssText='font-size:54px;color:#e5142a;transform:rotate(-5deg) scale(1.35);letter-spacing:3px;text-shadow:4px 4px 0 #0d0d0d,-2px -2px 0 #0d0d0d;font-family:Bangers,cursive';
+      timerEl.textContent='KA-BOOM!!';
+    }
+  },60);
+
+  setTimeout(()=>launchShrapnel(),80);
+  setTimeout(()=>launchBangTexts(),280);
+  setTimeout(()=>drawCracks(),480);
+  setTimeout(()=>{
+    document.getElementById('celebration-banner').style.display='block';
+    setTimeout(()=>{overlay.style.transition='opacity 1.2s';overlay.style.opacity='0';setTimeout(()=>{overlay.style.display='none';overlay.innerHTML='';overlay.style.opacity='1';},1200);},2800);
+  },1900);
+}
+
+function launchShrapnel(){
+  const overlay=document.getElementById('explosion-overlay');
+  const cx=window.innerWidth/2,cy=window.innerHeight/2;
+  const colors=['#f23f7a','#ffe033','#7c3aed','#ff6b1a','#00c9b1','#e5142a','#2563eb','#0d0d0d'];
+  const shapes=[
+    c=>`<svg width="42" height="42" viewBox="0 0 42 42"><polygon points="21,2 40,37 2,37" fill="${c}" stroke="#0d0d0d" stroke-width="2.5"/></svg>`,
+    c=>`<svg width="38" height="38" viewBox="0 0 38 38"><rect x="4" y="4" width="30" height="30" fill="${c}" stroke="#0d0d0d" stroke-width="2.5" transform="rotate(20 19 19)"/></svg>`,
+    c=>`<svg width="48" height="20" viewBox="0 0 48 20"><polygon points="0,10 10,0 38,0 48,10 38,20 10,20" fill="${c}" stroke="#0d0d0d" stroke-width="2"/></svg>`,
+    c=>`<svg width="28" height="52" viewBox="0 0 28 52"><polygon points="14,0 28,14 20,14 20,52 8,52 8,14 0,14" fill="${c}" stroke="#0d0d0d" stroke-width="2"/></svg>`,
+    c=>`<svg width="52" height="14" viewBox="0 0 52 14"><rect x="0" y="0" width="52" height="14" fill="${c}" stroke="#0d0d0d" stroke-width="2"/></svg>`,
+    c=>`<svg width="40" height="40" viewBox="0 0 40 40"><polygon points="20,2 24,14 38,14 27,22 31,36 20,28 9,36 13,22 2,14 16,14" fill="${c}" stroke="#0d0d0d" stroke-width="2"/></svg>`,
+    c=>`<svg width="18" height="60" viewBox="0 0 18 60"><polygon points="9,0 18,20 13,20 13,60 5,60 5,20 0,20" fill="${c}" stroke="#0d0d0d" stroke-width="2"/></svg>`,
+    c=>`<svg width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="16" fill="${c}" stroke="#0d0d0d" stroke-width="2.5"/><line x1="18" y1="2" x2="18" y2="34" stroke="#0d0d0d" stroke-width="2"/><line x1="2" y1="18" x2="34" y2="18" stroke="#0d0d0d" stroke-width="2"/></svg>`,
+  ];
+  const N=40;
+  for(let i=0;i<N;i++){
+    const el=document.createElement('div');el.className='shrapnel';
+    const angle=(i/N)*Math.PI*2+(Math.random()-.5)*.5;
+    const dist=160+Math.random()*window.innerWidth*1.5;
+    const color=colors[Math.floor(Math.random()*colors.length)];
+    const shape=shapes[Math.floor(Math.random()*shapes.length)](color);
+    el.innerHTML=shape;
+    el.style.cssText=`left:${cx}px;top:${cy}px;transform:translate(-50%,-50%);--tx:${Math.cos(angle)*dist}px;--ty:${Math.sin(angle)*dist}px;--rot:${(Math.random()-.5)*800}deg;--dur:${.55+Math.random()*.75}s;--sc:${Math.random()*.35+.05}`;
+    overlay.appendChild(el);
+  }
+}
+
+function launchBangTexts(){
+  const overlay=document.getElementById('explosion-overlay');
+  const words=['BAM!!','POW!!','ZAP!!','BOOM!!','KA-POW!','WHAM!!','BLAM!','SMASH!'];
+  const sizes=[82,66,98,74,90,62,72,84];
+  const colors=['#ffe033','#f23f7a','#00c9b1','#7c3aed','#ff6b1a','#e5142a','#2563eb','#ffe033'];
+  const rots=['-12deg','8deg','-5deg','15deg','-18deg','6deg','-10deg','12deg'];
+  const positions=[[15,10],[62,6],[80,62],[10,68],[42,22],[72,38],[26,52],[55,76]];
+  words.forEach((w,i)=>{
+    const el=document.createElement('div');el.className='bang-text';
+    const[lp,tp]=positions[i];
+    el.textContent=w;
+    el.style.cssText=`left:${lp}%;top:${tp}%;font-size:${sizes[i]}px;color:${colors[i]};--r:${rots[i]}`;
+    overlay.appendChild(el);
+    setTimeout(()=>el.classList.add('pop'),i*70+10);
+  });
+}
+
+function drawCracks(){
+  const overlay=document.getElementById('explosion-overlay');
+  const W=window.innerWidth,H=window.innerHeight;
+  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+  svg.setAttribute('width',W);svg.setAttribute('height',H);
+  svg.style.cssText='position:absolute;inset:0;pointer-events:none';
+  svg.classList.add('crack-svg');
+  const cx=W/2,cy=H/2;
+  const arms=[
+    [[cx,cy],[cx-W*.28,cy-H*.44],[cx-W*.38,cy-H*.28]],
+    [[cx,cy],[cx+W*.32,cy-H*.38],[cx+W*.18,cy-H*.5]],
+    [[cx,cy],[cx+W*.42,cy+H*.22],[cx+W*.5,cy+H*.4]],
+    [[cx,cy],[cx-W*.22,cy+H*.42],[cx-W*.38,cy+H*.32]],
+    [[cx,cy],[cx+W*.02,cy-H*.52],[cx+W*.12,cy-H*.58]],
+    [[cx,cy],[cx+W*.52,cy+W*.02],[cx+W*.54,cy-H*.12]],
+    [[cx,cy],[cx-W*.52,cy+H*.12],[cx-W*.5,cy-H*.08]],
+    [[cx,cy],[cx-W*.06,cy+H*.52],[cx+W*.08,cy+H*.54]],
+  ];
+  arms.forEach(pts=>{
+    const p1=document.createElementNS('http://www.w3.org/2000/svg','polyline');
+    p1.setAttribute('points',pts.map(p=>p.join(',')).join(' '));
+    p1.setAttribute('fill','none');p1.setAttribute('stroke','#0d0d0d');p1.setAttribute('stroke-width','3');p1.setAttribute('stroke-linecap','round');p1.setAttribute('opacity','.75');
+    svg.appendChild(p1);
+    const p2=document.createElementNS('http://www.w3.org/2000/svg','polyline');
+    p2.setAttribute('points',pts.map(([x,y])=>[x+(Math.random()-.5)*22,y+(Math.random()-.5)*22].join(',')).join(' '));
+    p2.setAttribute('fill','none');p2.setAttribute('stroke','#0d0d0d');p2.setAttribute('stroke-width','1.5');p2.setAttribute('opacity','.38');
+    svg.appendChild(p2);
+  });
+  overlay.appendChild(svg);
+}
+
+function renderClues(){
+  const acrossDiv=document.getElementById('clues-across');
+  const downDiv=document.getElementById('clues-down');
+  const across=WORDS_PLACED.filter(w=>w.dir==='A').sort((a,b)=>wordNumbers[`${a.word}-A`]-wordNumbers[`${b.word}-A`]);
+  const down=WORDS_PLACED.filter(w=>w.dir==='D').sort((a,b)=>wordNumbers[`${a.word}-D`]-wordNumbers[`${b.word}-D`]);
+  [{list:across,dir:'A',container:acrossDiv},{list:down,dir:'D',container:downDiv}].forEach(({list,dir,container})=>{
+    list.forEach(wp=>{
+      const key=`${wp.word}-${dir}`;
+      const item=document.createElement('div');item.className='clue-item';item.dataset.clueKey=key;
+      item.innerHTML=`<span class="clue-num">${wordNumbers[key]}</span><span class="clue-text">${wp.clue}</span>`;
+      item.addEventListener('click',()=>{
+        activeDir=dir;activeWordKey=key;
+        const cells=getWordCells(wp);
+        const target=cells.find(({r,c})=>!inputMap[`${r},${c}`]?.querySelector('input')?.value)||cells[0];
+        handleCellClick(target.r,target.c);
+      });
+      container.appendChild(item);
+    });
+  });
+}
+renderClues();
+</script>
+</body>
+</html>
