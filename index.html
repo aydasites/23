@@ -44,276 +44,6 @@ body{
 .popup-headline{font-family:'Playfair Display',serif;font-size:26px;font-weight:400;line-height:1.3;margin-bottom:12px;color:var(--ink)}
 .popup-sub{font-size:13px;color:#605e5a;margin-bottom:24px;line-height:1.5}
 
-/* RIDICULOUS BLURRED & CENSORED IMAGE STRIP */
-.popup-image-strip{display:flex;gap:12px;margin-bottom:24px;filter: blur(22px);opacity:0.3;user-select:none;pointer-events:none}
-.popup-fake-img{flex:1;height:80px;background:var(--cream);border:var(--border);display:flex;align-items:center;justify-content:center;font-size:28px;position:relative}
-
-.popup-testimonial{border-left:2px solid var(--gold);padding-left:14px;margin-bottom:24px;font-size:12px;color:#5c5a57;font-style:italic;line-height:1.6}
-.popup-testimonial strong{color:var(--ink);font-weight:500}
-.popup-features{display:flex;flex-direction:column;gap:8px;margin-bottom:28px}
-.popup-feature{display:flex;align-items:center;gap:8px;font-size:12px;color:#4a4845}
-.popup-feature::before{content:'•';color:var(--pink);font-weight:bold}
-.popup-cta{width:100%;background:var(--ink);color:#fff;border:none;padding:16px;font-size:13px;font-weight:500;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.2s}
-.popup-cta:hover{background:var(--blue);transform:translateY(-1px);box-shadow:0 8px 20px rgba(42,111,219,0.3)}
-.popup-disclaimer{font-size:9px;color:#9c9a96;margin-top:14px;text-align:center;line-height:1.4}
-
-/* ── INVITATION ENVELOPE ── */
-#invite-overlay{position:fixed;inset:0;z-index:9998;background:rgba(26,26,36,0.85);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;overflow:hidden}
-.envelope-wrapper{width:320px;height:240px;background:#f5f0e1;border:1px solid #d4ccb0;border-radius:4px;box-shadow:0 20px 50px rgba(0,0,0,0.1);cursor:pointer;position:relative;transition:all 0.6s cubic-bezier(0.16,1,0.3,1);transform-style:preserve-3d;transform-origin:center top}
-.envelope-wrapper::after{content:'🐻‍❄️ POLAR BEAR';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:16px;font-style:italic;color:#a09a85;border-top:1px solid rgba(255,255,255,0.4);border-radius:4px}
-.envelope-wrapper:hover{transform:rotateX(-15deg);box-shadow:0 30px 60px rgba(0,0,0,0.15)}
-
-.envelope-wrapper.open{transform:translateY(150px) rotateX(-90deg) scale(0.6);opacity:0;pointer-events:none}
-
-.invite-content{position:absolute;width:min(460px,92vw);background:var(--panel);border:1px solid var(--gold);box-shadow:0 24px 64px rgba(212,175,55,0.15);overflow:hidden;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.6);opacity:0;pointer-events:none;transition:all 0.6s cubic-bezier(0.16,1,0.3,1);z-index:2}
-.envelope-wrapper.open + .invite-content{transform:translate(-50%,-50%) scale(1);opacity:1;pointer-events:auto}
-
-.invite-header{border-bottom:var(--border);padding:14px 20px}
-.invite-header-text{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--gold-dim);flex-grow:1}
-.invite-body{padding:32px 28px}
-.invite-badge{display:inline-block;border:1px solid var(--blue);color:var(--blue);font-size:10px;font-weight:700;padding:3px 10px;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:20px}
-.invite-headline{font-family:'Playfair Display',serif;font-size:28px;font-weight:400;line-height:1.3;text-align:center;margin-bottom:24px;color:var(--ink)}
-
-.invite-card-details{border-top:var(--border);border-bottom:var(--border);padding:20px 0;margin-bottom:24px;display:flex;flex-direction:column;gap:14px}
-.invite-row{display:flex;font-size:14px;line-height:1.4}
-.invite-label{font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--gold-dim);width:70px;flex-shrink:0}
-.invite-val{color:var(--ink);font-family:'Playfair Display',serif;font-style:italic}
-.invite-val.prose{font-family:'DM Sans',sans-serif;font-style:normal;color:#4a4845}
-.invite-seal{text-align:center;font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--pink);font-weight:700;margin-top:4px}
-.invite-cta{width:100%;background:var(--blue);color:#fff;border:none;padding:16px;font-size:13px;font-weight:500;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.2s}
-.invite-cta:hover{background:var(--ink);border-color:var(--ink);box-shadow:0 8px 24px rgba(0,0,0,0.15)}
-
-/* ── MAIN SITE ── */
-#main-site{display:none;min-height:100vh}
-
-/* Header */
-.site-header{background:var(--panel);padding:32px 40px;display:flex;align-items:center;gap:28px;border-bottom:var(--border);position:relative}
-.header-image-container{position:relative;width:84px;height:84px;border-radius:50%;border:2px solid var(--gold);background:var(--cream);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.header-bear-img{width:100%;height:100%;object-fit:cover;border-radius:50%}
-.heart-doodle{position:absolute;width:18px;height:18px;fill:var(--pink);opacity:0.85;pointer-events:none}
-.hd-1{top:-6px;left:4px;animation:heartFloatOne 2.2s ease-in-out infinite alternate}
-.hd-2{bottom:4px;right:-10px;animation:heartFloatTwo 1.8s ease-in-out infinite alternate}
-@keyframes heartFloatOne{0%{transform:translate(0,0) rotate(-15deg) scale(0.9)}100%{transform:translate(-3px,-6px) rotate(-5deg) scale(1.1)}}
-@keyframes heartFloatTwo{0%{transform:translate(0,0) rotate(10deg) scale(1)}100%{transform:translate(4px,-4px) rotate(25deg) scale(0.85)}}
-.header-text{flex-grow:1}
-.header-eyebrow{font-size:11px;text-transform:uppercase;color:var(--blue);letter-spacing:3px;margin-bottom:4px;font-weight:700}
-.header-title{font-family:'Playfair Display',serif;font-size:clamp(24px,4vw,40px);font-weight:400;color:var(--ink);line-height:1.1}
-.header-title .bear{color:var(--pink);font-style:italic;font-weight:600}
-.header-sub{font-size:13px;color:#706e68;margin-top:4px}
-.header-starburst{position:absolute;right:40px;top:50%;transform:translateY(-50%);padding:8px 16px;border:1px solid var(--pink);font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--pink);text-align:center;font-weight:700}
-
-/* Tabs */
-.tabs{display:flex;background:var(--ink);padding:0 40px}
-.tab-btn{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.4);background:none;border:none;padding:20px 24px;cursor:pointer;position:relative;transition:color 0.2s}
-.tab-btn.active{color:#fff}
-.tab-btn.active::after{content:'';position:absolute;bottom:0;left:24px;right:24px;height:3px;background:var(--pink)}
-.tab-btn:hover:not(.active){color:rgba(255,255,255,0.8)}
-.tab-panel{display:none}
-.tab-panel.active{display:block;padding:48px 40px}
-
-/* ── CONNECTIONS & DANCING FIGURES ── */
-.connections-wrapper{position:relative;max-width:680px;margin:0 auto}
-.game-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:400;margin-bottom:6px;color:var(--ink)}
-.game-desc{font-size:13px;color:#7c7a74;margin-bottom:14px}
-
-/* Dancing figures - panel removed */
-.dancing-stage{display:flex;justify-content:center;gap:30px;margin-bottom:32px;padding:10px}
-.dancing-stick{width:40px;height:56px;stroke:var(--blue);stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transform-origin:bottom center}
-
-/* 4 distinct dancers and animations */
-.ds-groover{animation:danceGroover 0.5s ease-in-out infinite alternate;stroke:var(--pink)}
-.ds-splits{animation:danceSplits 0.6s ease-in-out infinite alternate;stroke:var(--emerald)}
-.ds-cartwheel{animation:danceCartwheel 0.8s linear infinite;stroke:var(--orange)}
-.ds-flipper{animation:danceGroover 0.55s ease-in-out infinite alternate-reverse;stroke:var(--purple)}
-
-@keyframes danceGroover{0%{transform:skewX(-6deg)}100%{transform:skewX(6deg)}}
-@keyframes danceSplits{0%{transform:scaleY(1)}100%{transform:scaleY(0.4)}}
-@keyframes danceCartwheel{0%{transform:translateX(0) rotate(0deg)}100%{transform:translateX(0) rotate(360deg)}}
-
-.info-panel{background:var(--panel);border-left:3px solid var(--blue);box-shadow:0 4px 12px rgba(0,0,0,0.02);padding:16px 20px;margin-bottom:28px;font-size:13px;color:#5c5a54;line-height:1.6}
-.info-panel strong{color:var(--blue);font-weight:700}
-.conn-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
-.conn-tile{background:var(--panel);border:var(--border);padding:20px 10px;text-align:center;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all 0.2s cubic-bezier(0.16,1,0.3,1);min-height:68px;display:flex;align-items:center;justify-content:center}
-.conn-tile:hover{border-color:var(--blue);background:var(--cream);transform:translateY(-2px)}
-.conn-tile.selected{background:var(--blue);color:#fff;border-color:var(--blue);transform:translateY(-2px)}
-.conn-tile.solved{cursor:default;transform:none;display:none}
-.conn-tile.wrong-shake{animation:wrongShake .4s ease}
-@keyframes wrongShake{0%,100%{transform:translateX(0)}20%{transform:translateX(-5px)}40%{transform:translateX(5px)}60%{transform:translateX(-3px)}80%{transform:translateX(3px)}}
-
-.solved-row{background:var(--panel);border-left:4px solid #fff;padding:16px 20px;margin-bottom:12px;display:flex;align-items:center;gap:16px;animation:solvedPop .5s cubic-bezier(0.16,1,0.3,1);box-shadow:0 4px 14px rgba(0,0,0,0.04)}
-.solved-row-1{border-left-color:var(--pink)}.solved-row-2{border-left-color:var(--emerald)}.solved-row-3{border-left-color:var(--gold)}.solved-row-4{border-left-color:var(--purple)}
-@keyframes solvedPop{from{transform:scale(0.97);opacity:0}to{transform:scale(1);opacity:1}}
-.solved-doodle{flex-shrink:0;opacity:0.8}
-.solved-category{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:2px}
-.solved-row-1 .solved-category{color:var(--pink)}.solved-row-2 .solved-category{color:var(--emerald)}.solved-row-3 .solved-category{color:var(--gold-dim)}.solved-row-4 .solved-category{color:var(--purple)}
-.solved-words{font-size:13px;color:#504f4b;letter-spacing:0.5px}
-
-.conn-controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-.btn{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;padding:12px 24px;border:1px solid var(--ink);cursor:pointer;transition:all 0.2s}
-.btn-secondary{background:transparent;color:var(--ink);border-color:#ccc}
-.btn-secondary:hover{background:rgba(0,0,0,0.03);border-color:var(--ink)}
-.btn-primary{background:var(--ink);color:#fff;border-color:var(--ink)}
-.btn-primary:hover:not(:disabled){background:var(--pink);border-color:var(--pink)}
-.btn-primary:disabled{opacity:0.2;cursor:not-allowed;border-color:rgba(0,0,0,0.1)}
-.attempts-row{display:flex;align-items:center;gap:10px;margin-left:auto;font-size:13px;color:#7c7a74}
-.attempt-dots{display:flex;gap:6px}
-.attempt-dot{width:8px;height:8px;border-radius:50%;background:var(--pink);transition:background 0.3s}
-.attempt-dot.used{background:#e0dbcf}
-.conn-message{margin-top:20px;min-height:24px;font-size:14px;color:var(--pink);text-align:center;font-weight:700}
-.conn-celebration-element {position:absolute;pointer-events:none;z-index:1000;animation:elementFloatUp 2.5s ease-out forwards}
-@keyframes elementFloatUp{0%{transform:translateY(100px) scale(0.3);opacity:0}20%{opacity:1}100%{transform:translateY(-400px) scale(1.1);opacity:0}}
-
-/* ── CROSSWORD ── */
-.crossword-wrapper{max-width:840px;margin:0 auto}
-.crossword-layout{display:flex;gap:48px;align-items:flex-start;flex-wrap:wrap}
-.crossword-timer{margin-bottom:24px;display:flex;align-items:baseline;gap:12px}
-#timer-display{font-family:'Playfair Display',serif;font-size:36px;font-weight:600;color:var(--ink);display:inline-block;transition:all 0.4s ease}
-.timer-label{font-size:11px;color:var(--blue);text-transform:uppercase;letter-spacing:1.5px;font-weight:700}
-
-.cw-grid-outer{position:relative;flex-shrink:0;background:transparent}
-.cw-cell{position:absolute;width:var(--cell);height:var(--cell);background:#fff;border:1px solid #c9c1b0;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.15s;z-index:1}
-.cw-num{position:absolute;top:2px;left:3px;font-size:9px;font-weight:700;color:var(--blue);line-height:1;pointer-events:none}
-.cw-cell input{width:100%;height:100%;border:none;outline:none;background:transparent;text-align:center;font-size:16px;font-weight:700;text-transform:uppercase;color:var(--ink);cursor:pointer}
-.cw-cell.active-word{background:rgba(42,111,219,0.1)}
-.cw-cell.active-cell{background:rgba(42,111,219,0.25)}
-.cw-cell.correct{background:rgba(0,176,116,0.12)}
-.cw-cell.correct input{color:var(--emerald)}
-.cw-cell.incorrect input{color:var(--pink)}
-
-/* Cell turned into cat photo for explosion */
-.cw-cell.solved-cat-transform{border:none;background:none;z-index:2;cursor:default}
-.cw-cell.solved-cat-transform input,.cw-cell.solved-cat-transform .cw-num{display:none}
-.cw-cell-cat-image{width:100%;height:100%;object-fit:cover;border-radius:2px;border:1px solid rgba(212,175,55,0.5)}
-
-.clues-panel{flex:1;min-width:240px}
-.clues-section{margin-bottom:28px}
-.clues-heading{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--blue);margin-bottom:14px;padding-bottom:6px;border-bottom:1px solid var(--border)}
-.clue-item{display:flex;gap:12px;margin-bottom:6px;font-size:13px;cursor:pointer;padding:6px 10px;transition:all 0.15s;line-height:1.5}
-.clue-item:hover{background:rgba(42,111,219,0.04)}
-.clue-item.active{background:var(--panel);border-left:3px solid var(--blue);padding-left:8px}
-.clue-num{font-weight:700;color:var(--blue);min-width:18px}
-.clue-text{color:#5c5a54}
-
-/* ── EXPLOSION REWARD ── */
-#explosion-overlay{display:none;position:fixed;inset:0;z-index:5000;pointer-events:none;overflow:hidden}
-.flash-white{position:absolute;inset:0;background:var(--cream);opacity:0;animation:flashOut 0.4s ease forwards}
-@keyframes flashOut{0%{opacity:0.5}100%{opacity:0}}
-
-/* Faster explosion animation */
-.falling-cat{
-  position:absolute;
-  pointer-events:none;
-  z-index:5001;
-  width:68px;
-  height:68px;
-  object-fit:cover;
-  border-radius:6px;
-  border:1px solid rgba(212,175,55,0.4);
-  box-shadow:0 6px 16px rgba(0,0,0,0.12);
-  animation:catExplodeRadial var(--dur, 1.8s) cubic-bezier(0.1,0.8,0.3,1) forwards;
-}
-@keyframes catExplodeRadial{
-  0%{transform:translate(0,0) rotate(0deg) scale(1);opacity:1}
-  100%{transform:translate(var(--tx, 100px),var(--ty, 100px)) rotate(var(--rot, 360deg)) scale(0);opacity:0}
-}
-
-.celebration-banner{display:none;background:var(--pink);color:#fff;border-top:2px solid var(--gold);padding:24px;text-align:center;font-family:'Playfair Display',serif;font-size:clamp(16px,3vw,24px);letter-spacing:2px;animation:celebFadeUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards}
-@keyframes celebFadeUp{from{transform:translateY(10px);opacity:0}to{transform:translateY(0);opacity:1}}
-
-/* Post celebration message */
-#post-message{display:none;position:fixed;bottom:80px;right:40px;z-index:5002;font-family:'Playfair Display',serif;font-size:20px;font-style:italic;color:var(--pink);letter-spacing:1px;background:var(--panel);border:var(--border);padding:10px 20px;animation:postFadeIn 0.5s ease forwards;opacity:0}
-@keyframes postFadeIn{from{transform:translateY(10px);opacity:0}to{transform:translateY(0);opacity:1}}
-
-/* ── RESPONSIVE ── */
-@media(max-width:600px){
-  .crossword-layout{flex-direction:column}
-  .clues-panel{width:100%}
-  :root{--cell:32px}
-  .cw-cell input{font-size:14px}
-  .cw-num{font-size:8px}
-  .site-header{padding:20px;flex-direction:column;text-align:center}
-  .header-starburst{position:static;transform:none;margin-top:12px;display:inline-block}
-  .tab-panel{padding:28px 20px}
-  .tabs{padding:0 20px}
-  .conn-grid{gap:8px}
-  .conn-tile{font-size:10px;min-height:56px}
-  .conn-controls{flex-direction:column;align-items:stretch}
-  .attempts-row{margin-left:0;margin-top:12px;justify-content:center}
-}
-</style>
-</head>
-<body>
-
-<div id="popup-overlay">
-  <div class="popup-content">
-    <div class="popup-header">
-      <span class="popup-header-text">System Notification • Priority Dispatch</span>
-      <button class="popup-close" id="popup-close-btn">✕</button>
-    </div>
-    <div class="popup-body">
-      <div class="popup-badge">Verified Dispatch · Innsbruck, AT</div>
-      <div class="popup-headline">Companionship Concierge:<br>843 Emotionally Unavailable Matches Found.</div>
-      <div class="popup-sub">Curated proximity alerts indicate a high volume of distant, beautiful, and emotionally protected prospects awaiting configuration in your area.</div>
-      
-      <div class="popup-image-strip">
-        <div class="popup-fake-img">?</div>
-        <div class="popup-fake-img">?</div>
-        <div class="popup-fake-img">?</div>
-      </div>
-      
-      <div class="popup-testimonial"><strong>Hans K., 38, Premium Subscriber:</strong> "I used to experience clear communication. Thanks to EuroAffair™, I now navigate complex layout puzzles daily. Exquisite."</div>
-      <div class="popup-features">
-        <div class="popup-feature">Background-checked (predominantly)I have implemented all your requested visual and logic updates. The companion ad pictures are now absurdly blurred and censored for a funny, mysterious effect. I transformed the simple invitation modal into an exquisite interactive envelope that must be clicked to reveal the letter inside, which I have also cleanly formatted to remove the overlapping text. The dancing line-art people are now performing complex acrobatics like splits and cartwheels against a clean, transparent background. Finally, I have revamped the final crossword reward from a falling rain into a fast, massive radial explosion of cat pictures triggered from the complete crossword grid, complete with a post-game winking message.
-
-Here is the fully revised codebase:
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HBD Polar Bear 🐻‍❄️</title>
-<link href="[https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;700&display=swap](https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;700&display=swap)" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --ink:#1a1a24;
-  --cream:#faf8f2;
-  --panel:#ffffff;
-  --gold:#d4af37;
-  --gold-dim:#b89528;
-  --pink:#ff3366;
-  --blue:#2a6fdb;
-  --emerald:#00b074;
-  --orange:#ff6b00;
-  --purple:#7a22e0;
-  --charcoal:#25252d;
-  --border:1px solid #ebdcc5;
-  --cell:40px;
-}
-body{
-  background-color:var(--cream);
-  font-family:'DM Sans',sans-serif;
-  color:var(--ink);
-  min-height:100vh;
-  overflow-x:hidden;
-  -webkit-font-smoothing:antialiased;
-}
-
-/* ── AD POPUP ── */
-#popup-overlay{position:fixed;inset:0;z-index:9999;background:rgba(26,26,36,0.85);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;overflow:hidden}
-.popup-content{position:relative;width:min(460px,92vw);background:var(--panel);border:1px solid var(--gold);box-shadow:0 24px 64px rgba(212,175,55,0.15);overflow:hidden;animation:popupFadeIn 0.6s cubic-bezier(0.16,1,0.3,1) forwards}
-@keyframes popupFadeIn{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
-.popup-header{border-bottom:var(--border);padding:14px 20px;display:flex;align-items:center;justify-content:between}
-.popup-header-text{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--gold-dim);flex-grow:1}
-.popup-close{background:none;border:none;color:var(--ink);cursor:pointer;font-size:16px;opacity:0.4;transition:opacity 0.2s}
-.popup-close:hover{opacity:1}
-.popup-body{padding:32px 28px}
-.popup-badge{display:inline-block;border:1px solid var(--pink);color:var(--pink);font-size:10px;font-weight:700;padding:3px 10px;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:20px}
-.popup-headline{font-family:'Playfair Display',serif;font-size:26px;font-weight:400;line-height:1.3;margin-bottom:12px;color:var(--ink)}
-.popup-sub{font-size:13px;color:#605e5a;margin-bottom:24px;line-height:1.5}
-
 /* RIDICULOUSLY BLURRED & CENSORED IMAGE STRIP */
 .popup-image-strip{display:flex;gap:12px;margin-bottom:24px;filter: blur(25px);opacity:0.25;user-select:none;pointer-events:none}
 .popup-fake-img{flex:1;height:80px;background:var(--cream);border:var(--border);display:flex;align-items:center;justify-content:center;font-size:28px;position:relative}
@@ -327,8 +57,21 @@ body{
 .popup-cta:hover{background:var(--blue);transform:translateY(-1px);box-shadow:0 8px 20px rgba(42,111,219,0.3)}
 .popup-disclaimer{font-size:9px;color:#9c9a96;margin-top:14px;text-align:center;line-height:1.4}
 
+/* ── PIN LOCK OVERLAY ── */
+#pin-overlay{position:fixed;inset:0;z-index:9998;background:rgba(26,26,36,0.95);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;overflow:hidden;transition:opacity 0.4s ease}
+.pin-box{background:var(--panel);border:1px solid var(--gold);border-radius:6px;padding:40px;text-align:center;width:min(360px,90vw);box-shadow:0 24px 64px rgba(0,0,0,0.3);transition:transform 0.3s, border-color 0.3s;animation:popupFadeIn 0.5s ease forwards}
+.pin-box.unlocked{border-color:var(--emerald);transform:scale(1.05)}
+.pin-icon{font-size:36px;margin-bottom:16px}
+.pin-title{font-family:'Playfair Display',serif;font-size:24px;color:var(--ink);margin-bottom:8px}
+.pin-desc{font-size:13px;color:#605e5a;margin-bottom:24px}
+#pin-input{font-family:'DM Sans',sans-serif;font-size:32px;letter-spacing:14px;text-align:center;width:100%;padding:14px;border:2px solid var(--border);border-radius:4px;background:var(--cream);color:var(--ink);outline:none;transition:border-color 0.2s}
+#pin-input:focus{border-color:var(--blue)}
+#pin-error{color:var(--pink);font-size:11px;font-weight:700;height:16px;margin-top:12px;letter-spacing:1.5px;text-transform:uppercase}
+.pin-btn{width:100%;background:var(--ink);color:#fff;border:none;border-radius:4px;padding:16px;margin-top:20px;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.2s}
+.pin-btn:hover{background:var(--blue);box-shadow:0 8px 20px rgba(42,111,219,0.3)}
+
 /* ── INVITATION ENVELOPE ── */
-#invite-overlay{position:fixed;inset:0;z-index:9998;background:rgba(26,26,36,0.85);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;overflow:hidden}
+#invite-overlay{position:fixed;inset:0;z-index:9997;background:rgba(26,26,36,0.85);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;overflow:hidden}
 .envelope-wrapper{width:320px;height:240px;background:#f5f0e1;border:1px solid #d4ccb0;border-radius:4px;box-shadow:0 20px 50px rgba(0,0,0,0.1);cursor:pointer;position:relative;transition:all 0.6s cubic-bezier(0.16,1,0.3,1);transform-style:preserve-3d;transform-origin:center top}
 .envelope-wrapper::after{content:'🐻‍❄️ POLAR BEAR';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:16px;font-style:italic;color:#a09a85;border-top:1px solid rgba(255,255,255,0.4);border-radius:4px}
 .envelope-wrapper:hover{transform:rotateX(-15deg);box-shadow:0 30px 60px rgba(0,0,0,0.15)}
@@ -386,9 +129,9 @@ body{
 .game-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:400;margin-bottom:6px;color:var(--ink)}
 .game-desc{font-size:13px;color:#7c7a74;margin-bottom:14px}
 
-/* Dancing figures - panel removed, complex acrobatics added */
-.dancing-stage{display:flex;justify-content:center;gap:30px;margin-bottom:32px;padding:10px}
-.dancing-stick{width:40px;height:56px;stroke:var(--blue);stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transform-origin:bottom center}
+/* Dancing figures - transparent background, splits/cartwheels added */
+.dancing-stage{display:flex;justify-content:center;gap:30px;margin-bottom:32px;padding:10px;background:transparent}
+.dancing-stick{width:40px;height:56px;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transform-origin:bottom center}
 
 /* dancers and animations */
 .ds-groover{animation:danceGroover 0.5s ease-in-out infinite alternate;stroke:var(--pink)}
@@ -469,30 +212,34 @@ body{
 .flash-white{position:absolute;inset:0;background:var(--cream);opacity:0;animation:flashOut 0.4s ease forwards}
 @keyframes flashOut{0%{opacity:0.5}100%{opacity:0}}
 
-/* Faster explosion animation */
-.falling-cat{
+/* Faster, outward radial explosion animation */
+.exploding-cat{
   position:absolute;
   pointer-events:none;
   z-index:5001;
-  width:68px;
-  height:68px;
   object-fit:cover;
   border-radius:6px;
   border:1px solid rgba(212,175,55,0.4);
   box-shadow:0 6px 16px rgba(0,0,0,0.12);
-  animation:catExplodeRadial var(--dur, 1.8s) cubic-bezier(0.1,0.8,0.3,1) forwards;
+  transform: translate(-50%, -50%);
+  animation:catExplodeRadial var(--dur, 0.8s) cubic-bezier(0.1,0.8,0.3,1) forwards;
 }
 @keyframes catExplodeRadial{
-  0%{transform:translate(0,0) rotate(0deg) scale(1);opacity:1}
-  100%{transform:translate(var(--tx, 100px),var(--ty, 100px)) rotate(var(--rot, 360deg)) scale(0);opacity:0}
+  0%{transform:translate(-50%, -50%) rotate(0deg) scale(1);opacity:1}
+  100%{transform:translate(calc(-50% + var(--tx, 200px)), calc(-50% + var(--ty, 200px))) rotate(var(--rot, 360deg)) scale(0.2);opacity:0}
 }
 
 .celebration-banner{display:none;background:var(--pink);color:#fff;border-top:2px solid var(--gold);padding:24px;text-align:center;font-family:'Playfair Display',serif;font-size:clamp(16px,3vw,24px);letter-spacing:2px;animation:celebFadeUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards}
 @keyframes celebFadeUp{from{transform:translateY(10px);opacity:0}to{transform:translateY(0);opacity:1}}
 
-/* Post celebration message */
-#post-message{display:none;position:fixed;bottom:80px;right:40px;z-index:5002;font-family:'Playfair Display',serif;font-size:20px;font-style:italic;color:var(--pink);letter-spacing:1px;background:var(--panel);border:var(--border);padding:10px 20px;animation:postFadeIn 0.5s ease forwards;opacity:0}
-@keyframes postFadeIn{from{transform:translateY(10px);opacity:0}to{transform:translateY(0);opacity:1}}
+/* Post celebration wink message */
+#post-message{
+  display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%);
+  z-index:5002; font-family:'Playfair Display',serif; font-size:42px; font-weight:600;
+  font-style:italic; color:var(--ink); text-shadow:0 8px 32px rgba(255,255,255,0.8);
+  letter-spacing:1px; text-align:center; animation:postFadeIn 0.8s cubic-bezier(0.16,1,0.3,1) forwards; opacity:0;
+}
+@keyframes postFadeIn{from{transform:translate(-50%, -40%);opacity:0}to{transform:translate(-50%, -50%);opacity:1}}
 
 /* ── RESPONSIVE ── */
 @media(max-width:600px){
@@ -543,9 +290,20 @@ body{
   </div>
 </div>
 
+<div id="pin-overlay">
+  <div class="pin-box" id="pin-box">
+    <div class="pin-icon">🔒</div>
+    <div class="pin-title">System Locked</div>
+    <div class="pin-desc">Enter 4-digit authorization code to proceed.</div>
+    <input type="password" id="pin-input" maxlength="4" placeholder="••••" />
+    <div id="pin-error"></div>
+    <button class="pin-btn" onclick="verifyPin()">Unlock System</button>
+  </div>
+</div>
+
 <div id="invite-overlay">
   <div class="envelope-wrapper" id="envelope-clicker" onclick="openEnvelope()">
-    </div>
+  </div>
   
   <div class="invite-content" id="invite-letter">
     <div class="invite-header">
@@ -584,7 +342,7 @@ body{
       <svg class="heart-doodle hd-1" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.5 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
       <svg class="heart-doodle hd-2" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.5 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
       
-      <img src="birthday-bear.png" alt="🐻‍❄️" class="header-bear-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)\' viewBox=\'0 0 100 100\'><circle cx=\'50\' cy=\'50\' r=\'40\' fill=\'%23ff3366\'/><text x=\'50\' y=\'60\' font-size=\'32\' text-anchor=\'middle\'>🐻‍❄️</text></svg>';">
+      <img src="birthday-bear.png" alt="🐻‍❄️" class="header-bear-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><circle cx=\'50\' cy=\'50\' r=\'40\' fill=\'%23ff3366\'/><text x=\'50\' y=\'60\' font-size=\'32\' text-anchor=\'middle\'>🐻‍❄️</text></svg>';">
     </div>
     <div class="header-text">
       <div class="header-eyebrow">The Annual Registry</div>
@@ -609,10 +367,6 @@ body{
           <circle cx="20" cy="10" r="6"/>
           <path d="M20 16v16M20 24l-12 8M20 24l12 8M20 32l-10 14M20 32l10 14"/>
         </svg>
-        <svg class="dancing-stick ds-splits" viewBox="0 0 40 60">
-          <circle cx="20" cy="10" r="6"/>
-          <path d="M20 16v16M20 24l-12 8M20 24l12 8M20 32l-10 14M20 32l10 14"/>
-        </svg>
         <svg class="dancing-stick ds-cartwheel" viewBox="0 0 40 60">
           <circle cx="20" cy="12" r="6"/>
           <path d="M20 18v16M20 20L6 26M20 20l14 6M20 34l-6 14M20 34l10 13"/>
@@ -620,6 +374,10 @@ body{
         <svg class="dancing-stick ds-groover" viewBox="0 0 40 60">
           <circle cx="20" cy="12" r="6"/>
           <path d="M20 18v16M20 22L8 14M20 22l12-8M20 34l-8 14M20 34l8 14"/>
+        </svg>
+        <svg class="dancing-stick ds-flipper" viewBox="0 0 40 60">
+          <circle cx="20" cy="10" r="6"/>
+          <path d="M20 16v16M20 24l-12 8M20 24l12 8M20 32l-10 14M20 32l10 14"/>
         </svg>
       </div>
 
@@ -685,11 +443,47 @@ function dismissPopup(){
   o.style.opacity='0';o.style.transform='scale(0.98)';
   setTimeout(()=>{
     o.style.display='none';
-    document.getElementById('invite-overlay').style.display='flex';
+    document.getElementById('pin-overlay').style.display='flex';
+    document.getElementById('pin-input').focus();
   },400);
 }
 document.getElementById('popup-close-btn').addEventListener('click',dismissPopup);
 document.getElementById('popup-cta-btn').addEventListener('click',dismissPopup);
+
+// PIN Verify Logic
+function verifyPin() {
+  const val = document.getElementById('pin-input').value;
+  const err = document.getElementById('pin-error');
+  const box = document.getElementById('pin-box');
+  
+  if(val === '1206') {
+    err.style.color = 'var(--emerald)';
+    err.textContent = 'ACCESS GRANTED';
+    box.classList.add('unlocked');
+    setTimeout(() => {
+      document.getElementById('pin-overlay').style.opacity = '0';
+      setTimeout(() => {
+        document.getElementById('pin-overlay').style.display = 'none';
+        document.getElementById('invite-overlay').style.display = 'flex';
+      }, 400);
+    }, 800);
+  } else {
+    err.textContent = 'INVALID CODE';
+    box.style.transform = 'translateX(-10px)';
+    setTimeout(()=> box.style.transform = 'translateX(10px)', 100);
+    setTimeout(()=> box.style.transform = 'translateX(-10px)', 200);
+    setTimeout(()=> box.style.transform = 'translateX(0)', 300);
+    document.getElementById('pin-input').value = '';
+    document.getElementById('pin-input').focus();
+  }
+}
+
+// Ensure Enter key works for the PIN
+document.getElementById('pin-input').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') {
+    verifyPin();
+  }
+});
 
 function openEnvelope(){
   document.getElementById('envelope-clicker').classList.add('open');
@@ -976,6 +770,9 @@ function checkAllComplete(){
 // Configured local repo image filenames matching request
 const LOCAL_CATS=['cat1.png','cat2.png','cat3.png','cat4.png','cat5.png','cat6.png','cat7.png','cat8.png','cat9.png','cat10.png','cat11.png','cat12.png','cat13.png','cat14.png','cat15.png'];
 
+// SVG Fallback just in case local cat files aren't found
+const CAT_FALLBACK = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23ff3366'/><text x='50' y='65' font-size='50' text-anchor='middle'>🐱</text></svg>";
+
 function triggerExplosion(){
   const overlay=document.getElementById('explosion-overlay');
   overlay.style.display='block';
@@ -983,18 +780,25 @@ function triggerExplosion(){
   const flash=document.createElement('div');flash.className='flash-white';overlay.appendChild(flash);
   setTimeout(()=>flash.remove(),400);
 
-  // transform grid cells into cats and explode them
+  // transform grid cells into cats and explode them OUTWARD
   transformCellsAndExplode();
 
-  // indedinite recurring cat generator loop init
-  setInterval(spawnIndividualExplosionCat, 180);
+  // indedinite recurring outward cat generator loop init (Faster!)
+  const spawnInterval = setInterval(spawnIndividualExplosionCat, 80);
+  
+  // Stop spawning after a while and show post-message
+  setTimeout(() => clearInterval(spawnInterval), 3000);
 
   setTimeout(()=>{
     const banner=document.getElementById('celebration-banner');
     banner.style.display='block';
     banner.scrollIntoView({behavior:'smooth'});
+  }, 1200);
+
+  // The Post-Game Wink Popup
+  setTimeout(() => {
     document.getElementById('post-message').style.display='block';
-  },1200);
+  }, 3500);
 }
 
 function transformCellsAndExplode(){
@@ -1004,49 +808,54 @@ function transformCellsAndExplode(){
     const imgEl=document.createElement('img');
     imgEl.className='cw-cell-cat-image';
     imgEl.src = randomCatFile;
+    imgEl.onerror = function() { this.src = CAT_FALLBACK; };
     
     // update cell to handle graphics instead of text input
     div.classList.add('solved-cat-transform');
     div.appendChild(imgEl);
     
     // inject fast explode velocity and scatter vectors onto transformed cell elements
-    const tx = (Math.random() - 0.5) * window.innerWidth * 1.5;
-    const ty = (Math.random() - 0.5) * window.innerHeight * 1.5;
+    const tx = (Math.random() - 0.5) * window.innerWidth * 2;
+    const ty = (Math.random() - 0.5) * window.innerHeight * 2;
     const rot = (Math.random() - 0.5) * 1440;
     
     div.style.setProperty('--tx', `${tx}px`);
     div.style.setProperty('--ty', `${ty}px`);
     div.style.setProperty('--rot', `${rot}deg`);
-    div.style.setProperty('--dur', `${1.2 + Math.random() * 0.8}s`);
+    div.style.setProperty('--dur', `${0.6 + Math.random() * 0.5}s`);
     div.style.animation = 'catExplodeRadial var(--dur) cubic-bezier(0.1,0.8,0.3,1) forwards';
     
     // Garbage collection for transformed exploded cells
-    setTimeout(()=>div.remove(),2000);
+    setTimeout(()=>div.remove(),1500);
   });
 }
 
 function spawnIndividualExplosionCat(){
   const el=document.createElement('img');
-  el.className='falling-cat';
+  el.className='exploding-cat';
   const randomCatFile = LOCAL_CATS[Math.floor(Math.random() * LOCAL_CATS.length)];
   el.src = randomCatFile;
-  el.style.left='50%'; el.style.top='50%'; // spawn from center of viewport screen
+  el.onerror = function() { this.src = CAT_FALLBACK; };
   
+  // spawn from center of viewport screen
+  el.style.left='50%'; el.style.top='50%'; 
+  
+  // Calculate outward radial trajectory
   const angle = Math.random() * Math.PI * 2;
-  const dist = 300 + Math.random() * window.innerWidth;
+  const dist = 400 + Math.random() * window.innerWidth;
   const tx = Math.cos(angle) * dist;
   const ty = Math.sin(angle) * dist;
   
   el.style.setProperty('--tx', `${tx}px`);
   el.style.setProperty('--ty', `${ty}px`);
   el.style.setProperty('--rot', ((Math.random()-0.5)*1080)+'deg');
-  el.style.setProperty('--dur',(1.4 + Math.random()*1.4)+'s');
+  el.style.setProperty('--dur',(0.7 + Math.random()*0.5)+'s');
   
-  const sizeValue=54 + Math.floor(Math.random()*36);
+  const sizeValue=40 + Math.floor(Math.random()*60);
   el.style.width=sizeValue+'px'; el.style.height=sizeValue+'px';
   
   document.getElementById('explosion-overlay').appendChild(el);
-  setTimeout(()=>el.remove(),3000);
+  setTimeout(()=>el.remove(),1500);
 }
 
 function renderClues(){
