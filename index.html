@@ -67,7 +67,7 @@ body{
 /* ── INVITATION ENVELOPE ── */
 #invite-overlay{position:fixed;inset:0;z-index:9997;background:rgba(26,26,36,0.85);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;overflow:hidden}
 .envelope-wrapper{width:320px;height:240px;background:#f5f0e1;border:1px solid #d4ccb0;border-radius:4px;box-shadow:0 20px 50px rgba(0,0,0,0.1);cursor:pointer;position:relative;transition:all 0.6s cubic-bezier(0.16,1,0.3,1);transform-style:preserve-3d;transform-origin:center top}
-.envelope-wrapper::after{content:'🐻‍❄️ POLAR BEAR';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:16px;font-style:italic;color:#a09a85;border-top:1px solid rgba(255,255,255,0.4);border-radius:4px;transition:opacity 0.4s}
+.envelope-wrapper::after{content:'🐻‍❄️ VISHAK';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:16px;font-style:italic;color:#a09a85;border-top:1px solid rgba(255,255,255,0.4);border-radius:4px;transition:opacity 0.4s}
 .envelope-wrapper:hover{transform:rotateX(-15deg);box-shadow:0 30px 60px rgba(0,0,0,0.15)}
 .envelope-wrapper.open{transform:translateY(100px) rotateX(-90deg) scale(0.6);opacity:0;pointer-events:none}
 
@@ -238,7 +238,7 @@ body{
   box-shadow:0 30px 60px rgba(0,0,0,0.25); 
   text-align:center; 
   opacity:0;
-  transition:opacity 1s ease;
+  transition:opacity 0.6s ease;
   width:min(500px, 90vw);
 }
 .sub-title{
@@ -293,6 +293,29 @@ body{
   cursor:pointer;
   padding:8px;
   transition:opacity 0.1s;
+}
+
+/* ── SHUTDOWN OVERLAY ── */
+#shutdown-overlay{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background-color:#000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  transition:opacity 1.5s ease;
+}
+.goodnight-text{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(24px, 4vw, 36px);
+  font-style:italic;
+  color:#fff;
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity 2s ease, transform 2s ease;
+  letter-spacing:1px;
 }
 
 /* ── RESPONSIVE ── */
@@ -485,10 +508,14 @@ body{
 <div id="subscription-box">
   <div class="sub-title">Renew girlfriend subscription for another year?</div>
   <div class="sub-options">
-    <button class="sub-btn">YES</button>
-    <button class="sub-btn blue-btn">YES</button>
+    <button class="sub-btn" onclick="acceptSubscription()">YES</button>
+    <button class="sub-btn blue-btn" onclick="acceptSubscription()">YES</button>
   </div>
   <button id="sub-no" onmouseenter="this.style.opacity='0'; this.style.pointerEvents='none';">NO</button>
+</div>
+
+<div id="shutdown-overlay">
+  <div id="goodnight-text" class="goodnight-text">Good night, Polar Bear. ✨</div>
 </div>
 
 <script>
@@ -850,6 +877,34 @@ function triggerEndingSequence(){
     subBox.style.display = 'block';
     setTimeout(() => { subBox.style.opacity = '1'; }, 50);
   }, 5000);
+}
+
+// ═══ FINAL SUBSCRIPTION ACCEPT LOGIC ═══
+function acceptSubscription() {
+  const subBox = document.getElementById('subscription-box');
+  subBox.style.opacity = '0';
+  
+  setTimeout(() => {
+    subBox.style.display = 'none';
+  }, 600);
+
+  // Allow exactly 3 seconds for the user to admire the cat wall, then shut down
+  setTimeout(() => {
+    const shutdownOverlay = document.getElementById('shutdown-overlay');
+    shutdownOverlay.style.display = 'flex';
+    
+    // Trigger reflow
+    void shutdownOverlay.offsetWidth;
+    shutdownOverlay.style.opacity = '1';
+    
+    // Fade in final text after screen goes black
+    setTimeout(() => {
+      const gnText = document.getElementById('goodnight-text');
+      gnText.style.opacity = '1';
+      gnText.style.transform = 'translateY(0)';
+    }, 1500);
+    
+  }, 3000);
 }
 
 function renderClues(){
