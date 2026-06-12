@@ -18,7 +18,6 @@
   --emerald:#00b074;
   --orange:#ff6b00;
   --purple:#7a22e0;
-  --charcoal:#25252d;
   --border:1px solid #ebdcc5;
   --cell:40px;
 }
@@ -31,31 +30,26 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 
-/* ── AD POPUP ── */
-#popup-overlay{position:fixed;inset:0;z-index:9999;background:rgba(26,26,36,0.85);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;overflow:hidden}
-.popup-content{position:relative;width:min(460px,92vw);background:var(--panel);border:1px solid var(--gold);box-shadow:0 24px 64px rgba(212,175,55,0.15);overflow:hidden;animation:popupFadeIn 0.6s cubic-bezier(0.16,1,0.3,1) forwards}
-@keyframes popupFadeIn{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
-.popup-header{border-bottom:var(--border);padding:14px 20px;display:flex;align-items:center;justify-content:between}
-.popup-header-text{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--gold-dim);flex-grow:1}
-.popup-close{background:none;border:none;color:var(--ink);cursor:pointer;font-size:16px;opacity:0.4;transition:opacity 0.2s}
-.popup-close:hover{opacity:1}
-.popup-body{padding:32px 28px}
-.popup-badge{display:inline-block;border:1px solid var(--pink);color:var(--pink);font-size:10px;font-weight:700;padding:3px 10px;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:20px}
-.popup-headline{font-family:'Playfair Display',serif;font-size:26px;font-weight:400;line-height:1.3;margin-bottom:12px;color:var(--ink)}
-.popup-sub{font-size:13px;color:#605e5a;margin-bottom:24px;line-height:1.5}
-
-/* RIDICULOUSLY BLURRED & CENSORED IMAGE STRIP */
-.popup-image-strip{display:flex;gap:12px;margin-bottom:24px;filter: blur(25px);opacity:0.25;user-select:none;pointer-events:none}
-.popup-fake-img{flex:1;height:80px;background:var(--cream);border:var(--border);display:flex;align-items:center;justify-content:center;font-size:28px;position:relative}
-
-.popup-testimonial{border-left:2px solid var(--gold);padding-left:14px;margin-bottom:24px;font-size:12px;color:#5c5a57;font-style:italic;line-height:1.6}
-.popup-testimonial strong{color:var(--ink);font-weight:500}
-.popup-features{display:flex;flex-direction:column;gap:8px;margin-bottom:28px}
-.popup-feature{display:flex;align-items:center;gap:8px;font-size:12px;color:#4a4845}
-.popup-feature::before{content:'•';color:var(--pink);font-weight:bold}
-.popup-cta{width:100%;background:var(--ink);color:#fff;border:none;padding:16px;font-size:13px;font-weight:500;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.2s}
-.popup-cta:hover{background:var(--blue);transform:translateY(-1px);box-shadow:0 8px 20px rgba(42,111,219,0.3)}
-.popup-disclaimer{font-size:9px;color:#9c9a96;margin-top:14px;text-align:center;line-height:1.4}
+/* ── SKETCHY AD POPUP ── */
+#popup-overlay{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.85);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.popup-content{position:relative;width:min(500px,95vw);background:#fff;border:2px solid #a0a0a0;box-shadow:0 0 50px rgba(0,0,0,0.6);font-family:Tahoma, Arial, sans-serif;animation:popupFadeIn 0.3s ease forwards}
+@keyframes popupFadeIn{from{transform:scale(0.9);opacity:0}to{transform:scale(1);opacity:1}}
+.popup-header{background:linear-gradient(to right, #000080, #1084d0);padding:6px 10px;display:flex;align-items:center;justify-content:space-between;color:#fff;font-weight:bold;font-size:12px;border-bottom:1px solid #fff}
+.popup-close{background:#d4d0c8;border:1px solid #fff;border-right-color:#404040;border-bottom-color:#404040;color:#000;cursor:pointer;font-size:12px;font-weight:bold;padding:2px 6px}
+.popup-close:active{border:1px solid #404040;border-right-color:#fff;border-bottom-color:#fff}
+.popup-body{padding:20px;text-align:center;background:#ece9d8}
+.popup-headline{color:#ff0000;font-size:26px;font-weight:900;text-decoration:underline;margin-bottom:10px;line-height:1.2;animation:blinkText 1s infinite}
+@keyframes blinkText{0%,49%{color:#ff0000}50%,100%{color:#000080}}
+.popup-sub{font-size:14px;color:#000;font-weight:bold;margin-bottom:20px;line-height:1.4}
+.popup-image-strip{display:flex;justify-content:center;gap:15px;margin-bottom:20px}
+.popup-fake-img{width:90px;height:90px;background:#fff;border:2px solid #000;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.popup-fake-img::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg, #ffcc00, #ffcc00 10px, #000 10px, #000 20px);opacity:0.3;filter:blur(2px)}
+.popup-fake-img::after{content:'CENSORED';position:absolute;background:red;color:#fff;font-size:10px;padding:4px;font-weight:900;transform:rotate(-15deg)}
+.popup-features{text-align:left;background:#fff;border:1px inset #a0a0a0;padding:12px;margin-bottom:20px;font-size:12px;color:#333;line-height:1.6;font-family:'Courier New', Courier, monospace}
+.popup-cta{width:100%;background:linear-gradient(to bottom, #00ff00, #008000);color:#fff;border:2px outset #00ff00;padding:16px;font-size:22px;font-weight:900;text-transform:uppercase;cursor:pointer;animation:pulseBtn 0.5s infinite alternate}
+.popup-cta:active{border-style:inset}
+@keyframes pulseBtn{from{transform:scale(1)}to{transform:scale(1.03)}}
+.popup-disclaimer{font-size:10px;color:#666;margin-top:15px;line-height:1.3}
 
 /* ── PIN LOCK OVERLAY ── */
 #pin-overlay{position:fixed;inset:0;z-index:9998;background:rgba(26,26,36,0.95);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;overflow:hidden;transition:opacity 0.4s ease}
@@ -73,28 +67,28 @@ body{
 /* ── INVITATION ENVELOPE ── */
 #invite-overlay{position:fixed;inset:0;z-index:9997;background:rgba(26,26,36,0.85);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;overflow:hidden}
 .envelope-wrapper{width:320px;height:240px;background:#f5f0e1;border:1px solid #d4ccb0;border-radius:4px;box-shadow:0 20px 50px rgba(0,0,0,0.1);cursor:pointer;position:relative;transition:all 0.6s cubic-bezier(0.16,1,0.3,1);transform-style:preserve-3d;transform-origin:center top}
-.envelope-wrapper::after{content:'🐻‍❄️ POLAR BEAR';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:16px;font-style:italic;color:#a09a85;border-top:1px solid rgba(255,255,255,0.4);border-radius:4px}
+.envelope-wrapper::after{content:'🐻‍❄️ POLAR BEAR';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:16px;font-style:italic;color:#a09a85;border-top:1px solid rgba(255,255,255,0.4);border-radius:4px;transition:opacity 0.4s}
 .envelope-wrapper:hover{transform:rotateX(-15deg);box-shadow:0 30px 60px rgba(0,0,0,0.15)}
+.envelope-wrapper.open{transform:translateY(100px) rotateX(-90deg) scale(0.6);opacity:0;pointer-events:none}
 
-.envelope-wrapper.open{transform:translateY(150px) rotateX(-90deg) scale(0.6);opacity:0;pointer-events:none}
-
-.invite-content{position:absolute;width:min(460px,92vw);background:var(--panel);border:1px solid var(--gold);box-shadow:0 24px 64px rgba(212,175,55,0.15);overflow:hidden;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.6);opacity:0;pointer-events:none;transition:all 0.6s cubic-bezier(0.16,1,0.3,1);z-index:2}
+.invite-content{position:absolute;width:min(460px,92vw);max-height:90vh;overflow-y:auto;background:var(--panel);border:1px solid var(--gold);box-shadow:0 24px 64px rgba(212,175,55,0.15);top:50%;left:50%;transform:translate(-50%,-50%) scale(0.8);opacity:0;pointer-events:none;transition:all 0.6s cubic-bezier(0.16,1,0.3,1);z-index:2}
 .envelope-wrapper.open + .invite-content{transform:translate(-50%,-50%) scale(1);opacity:1;pointer-events:auto}
 
 .invite-header{border-bottom:var(--border);padding:14px 20px}
-.invite-header-text{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--gold-dim);flex-grow:1}
+.invite-header-text{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--gold-dim)}
 .invite-body{padding:32px 28px}
 .invite-badge{display:inline-block;border:1px solid var(--blue);color:var(--blue);font-size:10px;font-weight:700;padding:3px 10px;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:20px}
-.invite-headline{font-family:'Playfair Display',serif;font-size:28px;font-weight:400;line-height:1.3;text-align:center;margin-bottom:24px;color:var(--ink)}
+.invite-headline{font-family:'Playfair Display',serif;font-size:26px;font-weight:400;line-height:1.3;text-align:center;margin-bottom:24px;color:var(--ink)}
 
-.invite-card-details{border-top:var(--border);border-bottom:var(--border);padding:20px 0;margin-bottom:24px;display:flex;flex-direction:column;gap:14px}
-.invite-row{display:flex;font-size:14px;line-height:1.4}
-.invite-label{font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--gold-dim);width:70px;flex-shrink:0}
-.invite-val{color:var(--ink);font-family:'Playfair Display',serif;font-style:italic}
+.invite-card-details{border-top:var(--border);border-bottom:var(--border);padding:20px 0;margin-bottom:24px;display:flex;flex-direction:column;gap:16px}
+.invite-row{display:flex;align-items:flex-start;gap:16px;font-size:14px;line-height:1.5}
+.invite-label{font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--gold-dim);min-width:80px;flex-shrink:0}
+.invite-val{color:var(--ink);font-family:'Playfair Display',serif;font-style:italic;word-wrap:break-word;flex-grow:1}
 .invite-val.prose{font-family:'DM Sans',sans-serif;font-style:normal;color:#4a4845}
-.invite-seal{text-align:center;font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--pink);font-weight:700;margin-top:4px}
+
+.invite-seal{text-align:center;font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--pink);font-weight:700;margin-top:16px}
 .invite-cta{width:100%;background:var(--blue);color:#fff;border:none;padding:16px;font-size:13px;font-weight:500;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.2s}
-.invite-cta:hover{background:var(--ink);border-color:var(--ink);box-shadow:0 8px 24px rgba(0,0,0,0.15)}
+.invite-cta:hover{background:var(--ink);box-shadow:0 8px 24px rgba(0,0,0,0.15)}
 
 /* ── MAIN SITE ── */
 #main-site{display:none;min-height:100vh}
@@ -129,11 +123,9 @@ body{
 .game-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:400;margin-bottom:6px;color:var(--ink)}
 .game-desc{font-size:13px;color:#7c7a74;margin-bottom:14px}
 
-/* Dancing figures - transparent background, splits/cartwheels added */
 .dancing-stage{display:flex;justify-content:center;gap:30px;margin-bottom:32px;padding:10px;background:transparent}
 .dancing-stick{width:40px;height:56px;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transform-origin:bottom center}
 
-/* dancers and animations */
 .ds-groover{animation:danceGroover 0.5s ease-in-out infinite alternate;stroke:var(--pink)}
 .ds-splits{animation:danceSplits 0.6s ease-in-out infinite alternate;stroke:var(--emerald)}
 .ds-cartwheel{animation:danceCartwheel 0.8s linear infinite;stroke:var(--orange)}
@@ -196,7 +188,7 @@ body{
 /* Cell turned into cat photo for explosion */
 .cw-cell.solved-cat-transform{border:none;background:none;z-index:2;cursor:default}
 .cw-cell.solved-cat-transform input,.cw-cell.solved-cat-transform .cw-num{display:none}
-.cw-cell-cat-image{width:100%;height:100%;object-fit:cover;border-radius:2px;border:1px solid rgba(212,175,55,0.5)}
+.cw-cell-cat-image{width:100%;height:100%;object-fit:cover;border-radius:4px;border:1px solid rgba(212,175,55,0.8)}
 
 .clues-panel{flex:1;min-width:240px}
 .clues-section{margin-bottom:28px}
@@ -219,8 +211,8 @@ body{
   z-index:5001;
   object-fit:cover;
   border-radius:6px;
-  border:1px solid rgba(212,175,55,0.4);
-  box-shadow:0 6px 16px rgba(0,0,0,0.12);
+  border:2px solid rgba(255,255,255,0.8);
+  box-shadow:0 6px 16px rgba(0,0,0,0.3);
   transform: translate(-50%, -50%);
   animation:catExplodeRadial var(--dur, 0.8s) cubic-bezier(0.1,0.8,0.3,1) forwards;
 }
@@ -232,12 +224,27 @@ body{
 .celebration-banner{display:none;background:var(--pink);color:#fff;border-top:2px solid var(--gold);padding:24px;text-align:center;font-family:'Playfair Display',serif;font-size:clamp(16px,3vw,24px);letter-spacing:2px;animation:celebFadeUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards}
 @keyframes celebFadeUp{from{transform:translateY(10px);opacity:0}to{transform:translateY(0);opacity:1}}
 
-/* Post celebration wink message */
+/* Sleek frosted glass final message */
 #post-message{
-  display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%);
-  z-index:5002; font-family:'Playfair Display',serif; font-size:42px; font-weight:600;
-  font-style:italic; color:var(--ink); text-shadow:0 8px 32px rgba(255,255,255,0.8);
-  letter-spacing:1px; text-align:center; animation:postFadeIn 0.8s cubic-bezier(0.16,1,0.3,1) forwards; opacity:0;
+  display:none; 
+  position:fixed; 
+  top:50%; left:50%; 
+  transform:translate(-50%, -50%);
+  z-index:5002; 
+  background:rgba(255, 255, 255, 0.92); 
+  backdrop-filter:blur(12px);
+  padding:40px 60px; 
+  border-radius:12px; 
+  border:1px solid rgba(212, 175, 55, 0.5);
+  box-shadow:0 30px 60px rgba(0,0,0,0.2); 
+  font-family:'Playfair Display',serif; 
+  font-size:clamp(24px, 5vw, 42px); 
+  font-weight:600;
+  font-style:italic; 
+  color:var(--pink); 
+  text-align:center; 
+  animation:postFadeIn 0.8s cubic-bezier(0.16,1,0.3,1) forwards; 
+  opacity:0;
 }
 @keyframes postFadeIn{from{transform:translate(-50%, -40%);opacity:0}to{transform:translate(-50%, -50%);opacity:1}}
 
@@ -256,6 +263,7 @@ body{
   .conn-tile{font-size:10px;min-height:56px}
   .conn-controls{flex-direction:column;align-items:stretch}
   .attempts-row{margin-left:0;margin-top:12px;justify-content:center}
+  #post-message{width:90%; padding:30px 20px;}
 }
 </style>
 </head>
@@ -264,28 +272,26 @@ body{
 <div id="popup-overlay">
   <div class="popup-content">
     <div class="popup-header">
-      <span class="popup-header-text">System Notification • Priority Dispatch</span>
-      <button class="popup-close" id="popup-close-btn">✕</button>
+      <span>Internet Security Warning</span>
+      <button class="popup-close" id="popup-close-btn">X</button>
     </div>
     <div class="popup-body">
-      <div class="popup-badge">Verified Dispatch · Innsbruck, AT</div>
-      <div class="popup-headline">Companionship Concierge:<br>843 Emotionally Unavailable Matches Found.</div>
-      <div class="popup-sub">Curated proximity alerts indicate a high volume of distant, beautiful, and emotionally protected prospects awaiting configuration in your area.</div>
+      <div class="popup-headline">CRITICAL MATCH DETECTED!</div>
+      <div class="popup-sub">System alert: You have (843) emotionally unavailable singles waiting to connect in your area.</div>
       
       <div class="popup-image-strip">
-        <div class="popup-fake-img">?</div>
-        <div class="popup-fake-img">?</div>
-        <div class="popup-fake-img">?</div>
+        <div class="popup-fake-img"></div>
+        <div class="popup-fake-img"></div>
+        <div class="popup-fake-img"></div>
       </div>
       
-      <div class="popup-testimonial"><strong>Hans K., 38, Premium Subscriber:</strong> "I used to experience clear communication. Thanks to EuroAffair™, I now navigate complex layout puzzles daily. Exquisite."</div>
       <div class="popup-features">
-        <div class="popup-feature">Background-checked (predominantly)</div>
-        <div class="popup-feature">Archival portraits from circa 2011</div>
-        <div class="popup-feature">Discreet billing statement camouflage: "BREAD SUBSCRIPTION"</div>
+        • INFECTION STATUS: Severe attraction<br>
+        • ARCHIVAL DATA: Portraits from circa 2011<br>
+        • BILLING: Discreetly charged as "BREAD SUBSCRIPTION"
       </div>
-      <button class="popup-cta" id="popup-cta-btn">Initialize Elite Profile Sequence 💘</button>
-      <div class="popup-disclaimer">EuroAffair™ is an independent entertainment simulation. Not responsible for emotional architecture, existential updates, or invoicing anomalies. Happy Birthday.</div>
+      <button class="popup-cta" id="popup-cta-btn">CLICK HERE TO ACCEPT SECURE CONNECTION &gt;&gt;</button>
+      <div class="popup-disclaimer">EuroAffair™ pop-up engine v4.0. By clicking you agree to layout puzzles and invoicing anomalies. Happy Birthday.</div>
     </div>
   </div>
 </div>
@@ -767,10 +773,10 @@ function checkAllComplete(){
 }
 
 // ═══ CLASSY CAT EXPLOSION REWARD ═══
-// Configured local repo image filenames matching request
-const LOCAL_CATS=['cat1.png','cat2.png','cat3.png','cat4.png','cat5.png','cat6.png','cat7.png','cat8.png','cat9.png','cat10.png','cat11.png','cat12.png','cat13.png','cat14.png','cat15.png'];
+// Configured to look for exact filenames relative to the HTML file in the Github folder
+const LOCAL_CATS=['./cat1.png','./cat2.png','./cat3.png','./cat4.png','./cat5.png','./cat6.png','./cat7.png','./cat8.png','./cat9.png','./cat10.png','./cat11.png','./cat12.png','./cat13.png','./cat14.png','./cat15.png'];
 
-// SVG Fallback just in case local cat files aren't found
+// SVG Fallback just in case a specific file is missing or named incorrectly
 const CAT_FALLBACK = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23ff3366'/><text x='50' y='65' font-size='50' text-anchor='middle'>🐱</text></svg>";
 
 function triggerExplosion(){
@@ -803,7 +809,6 @@ function triggerExplosion(){
 
 function transformCellsAndExplode(){
   Object.entries(inputMap).forEach(([key, div]) => {
-    // Pick unique cat file per transformed cell
     const randomCatFile = LOCAL_CATS[Math.floor(Math.random() * LOCAL_CATS.length)];
     const imgEl=document.createElement('img');
     imgEl.className='cw-cell-cat-image';
@@ -851,7 +856,7 @@ function spawnIndividualExplosionCat(){
   el.style.setProperty('--rot', ((Math.random()-0.5)*1080)+'deg');
   el.style.setProperty('--dur',(0.7 + Math.random()*0.5)+'s');
   
-  const sizeValue=40 + Math.floor(Math.random()*60);
+  const sizeValue=60 + Math.floor(Math.random()*60);
   el.style.width=sizeValue+'px'; el.style.height=sizeValue+'px';
   
   document.getElementById('explosion-overlay').appendChild(el);
